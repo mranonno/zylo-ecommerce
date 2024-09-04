@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { allProduct } from "../../assets/allProducts.json";
 
 const initialState = {
-    test: "",
+  test: "",
   name: "",
   email: "",
+  allProducts: allProduct,
 };
 
 const userSlice = createSlice({
@@ -18,9 +19,12 @@ const userSlice = createSlice({
     setTest: (state, action) => {
       state.test = action.payload;
     },
+    setAllProducts: (state, action) => {
+      state.allProducts = action.payload;
+    },
   },
 });
 
-export const { setUser,setTest } = userSlice.actions;
+export const { setUser, setTest, setAllProducts } = userSlice.actions;
 
 export default userSlice.reducer;

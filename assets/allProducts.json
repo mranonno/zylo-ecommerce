@@ -1,0 +1,34 @@
+[
+  {
+    "id": "1",
+    "image": "https://i.ibb.co/CK6PnS0/headphone-Black.png",
+    "price": "$89.99",
+    "name": "Noise Cancelling Headphones",
+    "model": "NC2000",
+    "color": "Black"
+  },
+  {
+    "id": "2",
+    "image": "https://i.ibb.co/cyF59pB/headphone-White.png",
+    "price": "$129.99",
+    "name": "Wireless Over-Ear Headphones",
+    "model": "WO3000",
+    "color": "Silver"
+  },
+  {
+    "id": "3",
+    "image": "https://i.ibb.co/CK6PnS0/headphone-Black.png",
+    "price": "$79.99",
+    "name": "In-Ear Bluetooth Headphones",
+    "model": "IE4000",
+    "color": "Blue"
+  },
+  {
+    "id": "4",
+    "image": "https://i.ibb.co/cyF59pB/headphone-White.png",
+    "price": "$79.99",
+    "name": "In-Ear Bluetooth Headphones",
+    "model": "IE4000",
+    "color": "Blue"
+  }
+]

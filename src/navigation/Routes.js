@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import CartScreen from "../screens/CartScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 const Routes = () => {
@@ -31,6 +32,10 @@ const Routes = () => {
         tabBarLabelStyle: { fontSize: 12 },
         tabBarActiveTintColor: "tomato",
         tabBarInactiveTintColor: "gray",
+        tabBarStyle: {
+          height: 60, // Adjust the height here
+          paddingBottom: 5,
+        },
       })}
     >
       <Tab.Screen
@@ -63,5 +68,3 @@ const Routes = () => {
 };
 
 export default Routes;
-
-const styles = StyleSheet.create({});

@@ -4,6 +4,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { persistor, store } from "./Redux/store";
 import { NavigationContainer } from "@react-navigation/native";
 import Routes from "./src/navigation/Routes";
+import MyProvider from "./src/Context/MainContex";
 // import { setTest } from './Redux/userReducer/userReducer';
 
 export default function App() {
@@ -12,9 +13,11 @@ export default function App() {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <NavigationContainer>
-          <Routes />
-        </NavigationContainer>
+        <MyProvider>
+          <NavigationContainer>
+            <Routes />
+          </NavigationContainer>
+        </MyProvider>
       </PersistGate>
     </Provider>
   );
