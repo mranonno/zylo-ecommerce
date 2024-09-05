@@ -80,7 +80,7 @@ const CartScreen = () => {
 export default CartScreen;
 
 const styles = StyleSheet.create({
-  container: { padding: 20, backgroundColor: "red", flex: 1 },
+  container: { padding: 20, flex: 1 },
   cart: {
     fontSize: 28,
     marginHorizontal: "auto",
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     right: 0,
     backgroundColor: "white",
     zIndex: 1,
-    paddingTop: 40,
+    paddingTop: 30,
     paddingBottom: 10,
   },
   cartContainer: {
@@ -102,8 +102,9 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     padding: 20,
-    marginTop: 78,
+    marginTop: 68,
     backgroundColor: "#f9f9f9",
+    paddingBottom: 140,
   },
   checkoutContainer: {
     position: "absolute",
