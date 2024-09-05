@@ -1,10 +1,45 @@
-import React from "react";
 import HomeScreen from "../screens/HomeScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import CartScreen from "../screens/CartScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import { FontAwesome5 } from "@expo/vector-icons";
 import FavoritesScreen from "../screens/FavoritesScreen";
+import { createStackNavigator } from "@react-navigation/stack";
+import ProductDetailsScreen from "../screens/ProductDetailsScreen";
+import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
+import { useLayoutEffect } from "react";
+import BrowseScreen from "../screens/BrowseScreen";
+
+const HomeStack = createStackNavigator();
+// const BrowseStack = createStackNavigator();
+// const FavoritesStack = createStackNavigator();
+// const CartStack = createStackNavigator();
+// const ProfileStack = createStackNavigator();
+
+function HomeStackScreen({ navigation, route }) {
+  const routeName = getFocusedRouteNameFromRoute(route);
+  useLayoutEffect(() => {
+    if (routeName === "ProductDetails") {
+      navigation.setOptions({ tabBarStyle: { display: "none" } });
+    } else {
+      navigation.setOptions({ tabBarStyle: { display: "flex" } });
+    }
+  }, [navigation, routeName]);
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ headerShown: false }}
+      />
+      <HomeStack.Screen
+        name="ProductDetails"
+        component={ProductDetailsScreen}
+        options={{ headerShown: true }}
+      />
+    </HomeStack.Navigator>
+  );
+}
 
 const Tab = createBottomTabNavigator();
 const Routes = () => {
@@ -38,12 +73,12 @@ const Routes = () => {
       <Tab.Screen
         options={{ headerShown: false }}
         name="Home"
-        component={HomeScreen}
+        component={HomeStackScreen}
       />
       <Tab.Screen
         options={{ headerShown: false }}
         name="Browse"
-        component={HomeScreen}
+        component={BrowseScreen}
       />
       <Tab.Screen
         options={{ headerShown: false }}

@@ -9,10 +9,11 @@ import {
 import React, { useContext, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import { MainContext } from "../Context/MainContext";
+import { useNavigation } from "@react-navigation/native";
 const HomeScreen = () => {
   const categories = ["All", "Audio", "Mobile"];
   const { allProducts } = useContext(MainContext);
-  console.log(allProducts);
+  const navigation = useNavigation();
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -91,8 +92,11 @@ const HomeScreen = () => {
         {allProducts?.map((product, index) => (
           <ProductCard product={product} key={index} />
         ))}
-        <ProductCard />
       </View>
+
+      <TouchableOpacity onPress={() => navigation.navigate("ProductDetails")}>
+        <Text>Go Details</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 };
