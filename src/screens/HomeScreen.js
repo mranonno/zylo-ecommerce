@@ -54,11 +54,19 @@ const HomeScreen = () => {
           source={require("../../assets/image/microphone.png")}
         />
         <View>
-          <Text style={{ color: "#868D94", fontWeight: 600 }}>Microphones</Text>
+          <Text style={{ color: "#868D94", fontWeight: 600, fontSize: 16 }}>
+            Microphones
+          </Text>
           <View style={{ flexDirection: "row", gap: 12 }}>
-            <Text style={{ color: "tomato", fontWeight: 900 }}>$108.20</Text>
+            <Text style={{ color: "tomato", fontSize: 20, fontWeight: 900 }}>
+              $108.20
+            </Text>
             <Text
-              style={{ textDecorationLine: "line-through", color: "#B0B5B9s" }}
+              style={{
+                textDecorationLine: "line-through",
+                fontSize: 16,
+                color: "#868D94",
+              }}
             >
               $199.99
             </Text>
