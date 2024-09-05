@@ -3,7 +3,7 @@ import React from "react";
 
 const ProductCard = ({ product }) => {
   return (
-    <View style={{ width: "46%" }}>
+    <View style={{ width: "48%" }}>
       <View
         style={{
           backgroundColor: "white",
@@ -20,7 +20,9 @@ const ProductCard = ({ product }) => {
           source={{ uri: "https://i.ibb.co/CK6PnS0/headphone-Black.png" }}
         />
       </View>
-      <Text style={{ fontWeight: "900", fontSize: 20 }}>$90.30</Text>
+      <Text style={{ fontWeight: "900", fontSize: 20, color: "tomato" }}>
+        $90.30
+      </Text>
       <Text style={{ fontSize: 16, fontWeight: 600 }}>
         SONY Premium {"\n"}Wireless Headphone
       </Text>

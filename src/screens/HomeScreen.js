@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import React, { useContext, useState } from "react";
 import ProductCard from "../components/ProductCard";
-import { MainContext } from "../Context/MainContex";
+import { MainContext } from "../Context/MainContext";
 const HomeScreen = () => {
   const categories = ["All", "Audio", "Mobile"];
   const { allProducts } = useContext(MainContext);
@@ -92,7 +92,7 @@ const HomeScreen = () => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-  container: { margin: 20 },
+  container: { padding: 20, backgroundColor: "#f9f9f9" },
   userName: { fontSize: 36, marginTop: 20, marginBottom: 8, fontWeight: "800" },
   category: {
     alignItems: "center",

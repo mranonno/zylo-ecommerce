@@ -4,7 +4,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { persistor, store } from "./Redux/store";
 import { NavigationContainer } from "@react-navigation/native";
 import Routes from "./src/navigation/Routes";
-import MyProvider from "./src/Context/MainContex";
+import MyProvider from "./src/Context/MainContext";
 // import { setTest } from './Redux/userReducer/userReducer';
 
 export default function App() {

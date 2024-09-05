@@ -1,18 +1,17 @@
-import { StyleSheet } from "react-native";
 import React from "react";
 import HomeScreen from "../screens/HomeScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import CartScreen from "../screens/CartScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import { FontAwesome5 } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
+import FavoritesScreen from "../screens/FavoritesScreen";
 
 const Tab = createBottomTabNavigator();
 const Routes = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
+        tabBarIcon: ({ focused, color }) => {
           let iconName;
 
           if (route.name === "Home") {
@@ -26,15 +25,13 @@ const Routes = () => {
           } else if (route.name === "Favorites") {
             iconName = focused ? "heart" : "heart";
           }
-          // Return the icon component
-          return <FontAwesome5 name={iconName} size={size} color={color} />;
+          return <FontAwesome5 name={iconName} size={22} color={color} />;
         },
-        tabBarLabelStyle: { fontSize: 12 },
+        tabBarLabelStyle: { fontSize: 14 },
         tabBarActiveTintColor: "tomato",
         tabBarInactiveTintColor: "gray",
         tabBarStyle: {
-          height: 60, // Adjust the height here
-          paddingBottom: 5,
+          height: 50,
         },
       })}
     >
@@ -51,7 +48,7 @@ const Routes = () => {
       <Tab.Screen
         options={{ headerShown: false }}
         name="Favorites"
-        component={HomeScreen}
+        component={FavoritesScreen}
       />
       <Tab.Screen
         options={{ headerShown: false }}
