@@ -4,18 +4,29 @@ export const MainContext = createContext();
 const MyProvider = ({ children }) => {
   const [allProducts, setAllProducts] = useState(allProduct);
   const [carts, setCarts] = useState([]);
+  const [favorites, setFavorites] = useState([]);
   const addToCart = (product) => {
     setCarts((prev) => {
-      // Check if the product is already in the cart
       const existingProduct = prev.find((item) => item.id === product.id);
       if (existingProduct) {
-        return prev; // Return the current cart if the product is already there
+        return prev;
       }
-      // Add the product to the cart if it's not already there
+      return [...prev, product];
+    });
+  };
+  const addToFavorite = (product) => {
+    setFavorites((prev) => {
+      const existingProduct = prev.find((item) => item.id === product.id);
+      if (existingProduct) {
+        return prev;
+      }
       return [...prev, product];
     });
   };
 
+  const removeFromFavorite = (productId) => {
+    setFavorites((prev) => prev.filter((product) => product.id !== productId));
+  };
   const removeFromCart = (productId) => {
     setCarts((prev) => prev.filter((product) => product.id !== productId));
   };
@@ -26,6 +37,10 @@ const MyProvider = ({ children }) => {
     carts,
     setCarts,
     removeFromCart,
+    favorites,
+    setFavorites,
+    addToFavorite,
+    removeFromFavorite,
   };
   return <MainContext.Provider value={value}>{children}</MainContext.Provider>;
 };

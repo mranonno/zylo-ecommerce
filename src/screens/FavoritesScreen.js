@@ -1,27 +1,22 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import FavoriteCard from "../components/FavoriteCard";
+import { MainContext } from "../Context/MainContext";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const FavoritesScreen = () => {
+  const { top } = useSafeAreaInsets();
+  const { favorites } = useContext(MainContext);
   return (
-    <View>
-      <View style={styles.stickyHeader}>
+    <View style={[styles.mainContainer, { paddingTop: top }]}>
+      <View style={[styles.stickyHeader, { paddingTop: top }]}>
         <Text style={styles.favorites}>Favorites</Text>
       </View>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.favoritesContainer}>
-          <FavoriteCard />
-          <FavoriteCard />
-          <FavoriteCard />
-          <FavoriteCard />
-          <FavoriteCard />
-          <FavoriteCard />
-          <FavoriteCard />
-          <FavoriteCard />
-          <FavoriteCard />
-          <FavoriteCard />
-          <FavoriteCard />
-          <FavoriteCard />
+          {favorites.map((product, index) => (
+            <FavoriteCard product={product} key={index} />
+          ))}
         </View>
       </ScrollView>
     </View>
@@ -31,6 +26,10 @@ const FavoritesScreen = () => {
 export default FavoritesScreen;
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    backgroundColor: "#F2F3F5",
+    flex: 1,
+  },
   favorites: {
     fontSize: 28,
     marginHorizontal: "auto",
@@ -47,13 +46,11 @@ const styles = StyleSheet.create({
     right: 0,
     backgroundColor: "white",
     zIndex: 1,
-    paddingTop: 30,
     paddingBottom: 10,
   },
   scrollContainer: {
     padding: 20,
     marginTop: 68,
-    backgroundColor: "#f9f9f9",
     paddingBottom: 80,
   },
 });

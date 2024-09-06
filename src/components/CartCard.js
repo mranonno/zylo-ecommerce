@@ -21,7 +21,10 @@ const CartCard = ({ product }) => {
             padding: 10,
           }}
         >
-          <Image style={{ width: 76, height: 76 }} source={{ uri: url }} />
+          <Image
+            style={{ width: 76, height: 76, resizeMode: "contain" }}
+            source={{ uri: url }}
+          />
         </View>
         <View>
           <Text style={{ fontWeight: "900", fontSize: 18, color: "tomato" }}>

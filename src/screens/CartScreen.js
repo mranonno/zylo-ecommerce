@@ -8,13 +8,15 @@ import {
 import React, { useContext } from "react";
 import CartCard from "../components/CartCard";
 import { MainContext } from "../Context/MainContext";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const CartScreen = () => {
   const { carts } = useContext(MainContext);
   console.log(carts);
+  const { top } = useSafeAreaInsets();
   return (
-    <View style={styles.container}>
-      <View style={styles.stickyHeader}>
+    <View style={[styles.container, { paddingTop: top }]}>
+      <View style={[styles.stickyHeader, { paddingTop: top }]}>
         <Text style={styles.cart}>Cart</Text>
       </View>
       <View style={styles.contentContainer}>
@@ -76,7 +78,7 @@ export default CartScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f9f9f9",
+    backgroundColor: "#F2F3F5",
   },
   cart: {
     fontSize: 28,
@@ -90,7 +92,6 @@ const styles = StyleSheet.create({
     right: 0,
     backgroundColor: "white",
     zIndex: 1,
-    paddingTop: 30,
     paddingBottom: 10,
   },
   contentContainer: {
@@ -103,8 +104,7 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     padding: 20,
-    marginTop: 68,
-    backgroundColor: "#f9f9f9",
+    marginTop: 40,
     paddingBottom: 80,
   },
   checkoutContainer: {
