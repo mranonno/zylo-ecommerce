@@ -12,8 +12,14 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const CartScreen = () => {
   const { carts } = useContext(MainContext);
-  console.log(carts);
   const { top } = useSafeAreaInsets();
+  const shippingPrice = 10 * carts.length;
+  const price = carts.reduce((total, cart) => total + cart.price, 0);
+  console.log("price", JSON.stringify(price, null, 1));
+  const totalPrice = price + shippingPrice;
+
+  console.log("totalPrice", JSON.stringify(totalPrice, null, 1));
+  console.log("shippingPrice", JSON.stringify(shippingPrice, null, 1));
   return (
     <View style={[styles.container, { paddingTop: top }]}>
       <View style={[styles.stickyHeader, { paddingTop: top }]}>
@@ -36,7 +42,7 @@ const CartScreen = () => {
               }}
             >
               <Text>Shipping</Text>
-              <Text style={{ color: "tomato" }}>$120</Text>
+              <Text style={{ color: "tomato" }}>{shippingPrice}</Text>
             </View>
             <View
               style={{
@@ -60,7 +66,7 @@ const CartScreen = () => {
               <Text
                 style={{ fontWeight: "bold", fontSize: 18, color: "tomato" }}
               >
-                $160
+                {totalPrice}
               </Text>
             </View>
           </View>
