@@ -10,6 +10,7 @@ const ProductCard = ({ product }) => {
     useContext(MainContext);
   const isProductInFavorites = favorites.find((item) => item.id === product.id);
   console.log(product.name);
+  const isFavorite = favorites.find((item) => item.id === product.id);
   const url = product.image;
   const handleFavorites = () => {
     if (isProductInFavorites) {
@@ -50,7 +51,11 @@ const ProductCard = ({ product }) => {
               zIndex: 1,
             }}
           >
-            <AntDesign name="hearto" size={24} color={"tomato"} />
+            <AntDesign
+              name={isFavorite ? "heart" : "hearto"}
+              size={24}
+              color={"tomato"}
+            />
           </TouchableOpacity>
           <Image
             style={{ width: "85%", height: "100%" }}

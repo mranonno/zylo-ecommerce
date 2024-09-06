@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     padding: 20,
-    marginTop: 68,
+    marginTop: 40,
     paddingBottom: 80,
   },
 });
