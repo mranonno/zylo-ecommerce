@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React, { useContext } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { MainContext } from "../Context/MainContext";
+import { showToast } from "./HelpingComponents";
 
 const CartCard = ({ product }) => {
   const { removeFromCart } = useContext(MainContext);
@@ -9,7 +10,8 @@ const CartCard = ({ product }) => {
 
   const handleRemoveFromCart = () => {
     removeFromCart(product.id);
-    alert("Product removed from cart!");
+    // alert("Product removed from cart!");
+    showToast("Removed from cart!", "black");
   };
   return (
     <View style={styles.container}>

@@ -8,21 +8,20 @@ import {
 } from "react-native";
 import React, { useContext } from "react";
 import { MainContext } from "../Context/MainContext";
+import { showToast } from "../components/HelpingComponents";
 
 const ProductDetailsScreen = ({ route }) => {
   const { addToCart, carts } = useContext(MainContext);
   const product = route.params;
-  console.log(product);
-  console.log(carts);
-  const url = product.image;
+  const url = product?.image || "https://i.ibb.co/CK6PnS0/headphone-Black.png";
   const isProductInCart = carts.find((item) => item.id === product.id);
 
   const handleAddToCart = () => {
     if (isProductInCart) {
-      alert("Product is already in the cart!");
+      showToast("Already Added!", "black");
     } else {
       addToCart(product);
-      alert("Product added to cart!");
+      showToast("Added to cart!", "black");
     }
   };
   return (

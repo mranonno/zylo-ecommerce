@@ -2,12 +2,14 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React, { useContext } from "react";
 import { AntDesign, Feather } from "@expo/vector-icons";
 import { MainContext } from "../Context/MainContext";
+import { showToast } from "./HelpingComponents";
 
 const FavoriteCard = ({ product }) => {
   const { removeFromFavorite } = useContext(MainContext);
   const url = product.image;
   const handleRemoveFromFavorite = () => {
     removeFromFavorite(product.id);
+    showToast("Removed from favorite!", "tomato");
   };
   return (
     <View style={styles.container}>
@@ -22,7 +24,7 @@ const FavoriteCard = ({ product }) => {
           {product.name || "Unavailable"}
         </Text>
         <Text style={styles.productModelText}>
-          {product.model}, {product.color}
+          Model: {product.model}, {product.color}
         </Text>
       </View>
       <View style={styles.buttonMainContainer}>
@@ -80,45 +82,3 @@ const styles = StyleSheet.create({
     gap: 16,
   },
 });
-
-{
-  /* <View style={styles.checkoutContainer}>
-  <View style={{ width: "65%" }}>
-    <View
-      style={{
-        flexDirection: "row",
-        justifyContent: "space-between",
-      }}
-    >
-      <Text>Shipping</Text>
-      <Text style={{ color: "tomato" }}>$120</Text>
-    </View>
-    <View
-      style={{
-        flexDirection: "row",
-        justifyContent: "space-between",
-      }}
-    >
-      <Text style={{ fontWeight: "bold", fontSize: 18 }}>
-        Total{" "}
-        <Text
-          style={{
-            color: "#B0B5B9",
-            fontWeight: "normal",
-            fontSize: 14,
-          }}
-        >
-          {" "}
-          VAT included
-        </Text>
-      </Text>
-      <Text style={{ fontWeight: "bold", fontSize: 18, color: "tomato" }}>
-        $160
-      </Text>
-    </View>
-  </View>
-  <TouchableOpacity style={styles.checkoutButton}>
-    <Text style={styles.checkoutButtonText}>Checkout</Text>
-  </TouchableOpacity>
-</View>; */
-}

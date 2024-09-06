@@ -3,22 +3,22 @@ import React, { useContext } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 import { MainContext } from "../Context/MainContext";
+import { showToast } from "./HelpingComponents";
 
 const ProductCard = ({ product }) => {
   const navigation = useNavigation();
   const { addToFavorite, favorites, removeFromFavorite } =
     useContext(MainContext);
   const isProductInFavorites = favorites.find((item) => item.id === product.id);
-  console.log(product.name);
   const isFavorite = favorites.find((item) => item.id === product.id);
   const url = product.image;
   const handleFavorites = () => {
     if (isProductInFavorites) {
       removeFromFavorite(product.id);
-      alert("Product remove from favorite!");
+      showToast("Removed from favorite!", "black");
     } else {
       addToFavorite(product);
-      alert("Product added to favorite!");
+      showToast("Added to favorite!", "black");
     }
   };
   return (
@@ -41,15 +41,7 @@ const ProductCard = ({ product }) => {
         >
           <TouchableOpacity
             onPress={handleFavorites}
-            style={{
-              position: "absolute",
-              top: 5,
-              right: 5,
-              padding: 8,
-              borderRadius: 50,
-              backgroundColor: "#F9F9F9",
-              zIndex: 1,
-            }}
+            style={styles.favoriteButton}
           >
             <AntDesign
               name={isFavorite ? "heart" : "hearto"}
@@ -67,7 +59,7 @@ const ProductCard = ({ product }) => {
         </Text>
         <Text style={{ fontSize: 16, fontWeight: 600 }}>{product.name}</Text>
         <View>
-          <Text style={{ color: "#868D94" }}>Model:SXD083, Black</Text>
+          <Text style={{ color: "#868D94" }}>Model: SXD083, Black</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -76,4 +68,14 @@ const ProductCard = ({ product }) => {
 
 export default ProductCard;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  favoriteButton: {
+    position: "absolute",
+    top: 5,
+    right: 5,
+    padding: 8,
+    borderRadius: 50,
+    backgroundColor: "#F2F3F5",
+    zIndex: 1,
+  },
+});

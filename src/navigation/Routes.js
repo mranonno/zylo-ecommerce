@@ -28,7 +28,7 @@ function HomeStackScreen({ navigation, route }) {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
-        name="Home"
+        name="HomeMain"
         component={HomeScreen}
         options={{ headerShown: false }}
       />
