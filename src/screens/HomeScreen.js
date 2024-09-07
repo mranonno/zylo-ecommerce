@@ -6,19 +6,27 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import { MainContext } from "../Context/MainContext";
 import { useNavigation } from "@react-navigation/native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useDispatch, useSelector } from "react-redux";
+import { setProducts } from "../../Redux/Slice/ProductSlice";
 
 const HomeScreen = () => {
   const categories = ["All", "Audio", "Mobile"];
   const { allProducts } = useContext(MainContext);
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const { top } = useSafeAreaInsets();
-  // console.log("allProducts", JSON.stringify(allProducts, null, 1));
+
+  useEffect(() => {
+    dispatch(setProducts(allProducts));
+  }, []);
+  const { products } = useSelector((state) => state.products);
+  console.log("helllo.......", JSON.stringify(products, null, 1));
   return (
     <View style={[styles.mainContainer, { paddingTop: top }]}>
       <ScrollView contentContainerStyle={styles.container}>

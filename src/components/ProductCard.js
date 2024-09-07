@@ -9,11 +9,10 @@ const ProductCard = ({ product }) => {
   const navigation = useNavigation();
   const { addToFavorite, favorites, removeFromFavorite } =
     useContext(MainContext);
-  const isProductInFavorites = favorites.find((item) => item.id === product.id);
-  const isFavorite = favorites.find((item) => item.id === product.id);
   const url = product.image;
+  const isFavorite = favorites.find((item) => item.id === product.id);
   const handleFavorites = () => {
-    if (isProductInFavorites) {
+    if (isFavorite) {
       removeFromFavorite(product.id);
       showToast("Removed from favorite!", "black");
     } else {

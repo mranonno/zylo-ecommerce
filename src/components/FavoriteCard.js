@@ -5,11 +5,21 @@ import { MainContext } from "../Context/MainContext";
 import { showToast } from "./HelpingComponents";
 
 const FavoriteCard = ({ product }) => {
-  const { removeFromFavorite } = useContext(MainContext);
+  const { removeFromFavorite, addToCart, carts } = useContext(MainContext);
   const url = product.image;
   const handleRemoveFromFavorite = () => {
     removeFromFavorite(product.id);
-    showToast("Removed from favorite!", "tomato");
+    showToast("Removed from favorite!", "black");
+  };
+
+  const isProductInCart = carts.find((item) => item.id === product.id);
+  const handleAddToCart = () => {
+    if (isProductInCart) {
+      showToast("Already Added!", "black");
+    } else {
+      addToCart(product);
+      showToast("Added to cart!", "black");
+    }
   };
   return (
     <View style={styles.container}>
@@ -17,9 +27,7 @@ const FavoriteCard = ({ product }) => {
         <Image style={styles.cardImage} source={{ uri: url }} />
       </View>
       <View style={styles.itemDetailsContainer}>
-        <Text style={styles.productPriceText}>
-          ${product?.price || "00.00"}
-        </Text>
+        <Text style={styles.productPriceText}>${product?.price || "00"}</Text>
         <Text style={styles.productNameText}>
           {product.name || "Unavailable"}
         </Text>
@@ -28,7 +36,7 @@ const FavoriteCard = ({ product }) => {
         </Text>
       </View>
       <View style={styles.buttonMainContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handleAddToCart}>
           <Feather name="shopping-cart" size={24} color="black" />
         </TouchableOpacity>
         <TouchableOpacity onPress={handleRemoveFromFavorite}>
