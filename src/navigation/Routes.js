@@ -13,11 +13,27 @@ import ComingSoonScreen from "../components/ComingSoonScreen";
 import CategoriesViewsScreen from "../screens/CategoriesViewsScreen";
 
 const HomeStack = createStackNavigator();
-// const BrowseStack = createStackNavigator();
+const BrowseStack = createStackNavigator();
 // const FavoritesStack = createStackNavigator();
 // const CartStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
 
+function BrowseStackScreen() {
+  return (
+    <BrowseStack.Navigator>
+      <BrowseStack.Screen
+        name="BrowseMain"
+        component={BrowseScreen}
+        options={{ headerShown: false }}
+      />
+      <BrowseStack.Screen
+        name="Categories"
+        component={CategoriesViewsScreen}
+        options={{ headerShown: true, headerTitle: "Product Details" }}
+      />
+    </BrowseStack.Navigator>
+  );
+}
 function HomeStackScreen({ navigation, route }) {
   const routeName = getFocusedRouteNameFromRoute(route);
   useLayoutEffect(() => {
@@ -134,7 +150,7 @@ const Routes = () => {
       <Tab.Screen
         options={{ headerShown: false }}
         name="Browse"
-        component={BrowseScreen}
+        component={BrowseStackScreen}
       />
       <Tab.Screen
         options={{ headerShown: false }}

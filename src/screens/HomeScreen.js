@@ -12,26 +12,29 @@ import { MainContext } from "../Context/MainContext";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "../../Redux/Slice/ProductSlice";
+import { useNavigation } from "@react-navigation/native";
 
 const HomeScreen = () => {
-  const categories = ["All", "Audio", "Mobile"];
+  const { categories } = useContext(MainContext);
   const { allProducts } = useContext(MainContext);
   const dispatch = useDispatch();
-
+  const navigation = useNavigation();
   const { top } = useSafeAreaInsets();
 
   useEffect(() => {
     dispatch(setProducts(allProducts));
   }, []);
   const { products } = useSelector((state) => state.products);
-  console.log("helllo.......", JSON.stringify(products, null, 1));
   return (
     <View style={[styles.mainContainer, { paddingTop: top }]}>
       <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.userName}>Hello Michael</Text>
         <View style={styles.category}>
           {categories.map((category, index) => (
-            <TouchableOpacity key={index}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Categories", category)}
+              key={index}
+            >
               <Text style={styles.categoryButton}>{category}</Text>
             </TouchableOpacity>
           ))}
@@ -63,7 +66,7 @@ const HomeScreen = () => {
           <Text style={styles.title}>Recommended for you</Text>
         </View>
         <View style={styles.allProductContainer}>
-          {allProducts?.map((product, index) => (
+          {products?.map((product, index) => (
             <ProductCard product={product} key={index} />
           ))}
         </View>

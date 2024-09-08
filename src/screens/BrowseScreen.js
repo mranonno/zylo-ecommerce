@@ -6,12 +6,13 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { AntDesign, Feather } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 import ProductCard from "../components/ProductCard";
 import { useNavigation } from "@react-navigation/native";
+import { MainContext } from "../Context/MainContext";
 
 const BrowseScreen = () => {
   const navigation = useNavigation();
@@ -33,17 +34,7 @@ const BrowseScreen = () => {
   console.log("products", JSON.stringify(contentScreen, null, 1));
 
   const { top } = useSafeAreaInsets();
-  const categories = [
-    "All",
-    "Headphones",
-    "Earbuds",
-    "Smartwatch",
-    "Phone",
-    "Camera",
-    "Monitor",
-    "UPS",
-    "Networking",
-  ];
+  const { categories } = useContext(MainContext);
   return (
     <View style={[styles.container, { paddingTop: top }]}>
       <View>

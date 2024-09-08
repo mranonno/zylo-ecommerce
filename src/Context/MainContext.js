@@ -5,6 +5,17 @@ const MyProvider = ({ children }) => {
   const [allProducts, setAllProducts] = useState(allProduct);
   const [carts, setCarts] = useState([]);
   const [favorites, setFavorites] = useState([]);
+  const categories = [
+    "All",
+    "Headphones",
+    "Earbuds",
+    "Smartwatch",
+    "Phone",
+    "Camera",
+    "Monitor",
+    "UPS",
+    "Networking",
+  ];
   const addToCart = (product) => {
     setCarts((prev) => {
       const existingProduct = prev.find((item) => item.id === product.id);
@@ -41,6 +52,7 @@ const MyProvider = ({ children }) => {
     setFavorites,
     addToFavorite,
     removeFromFavorite,
+    categories,
   };
   return <MainContext.Provider value={value}>{children}</MainContext.Provider>;
 };
