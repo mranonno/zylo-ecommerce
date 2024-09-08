@@ -10,7 +10,6 @@ const CartCard = ({ product }) => {
 
   const handleRemoveFromCart = () => {
     removeFromCart(product.id);
-    // alert("Product removed from cart!");
     showToast("Removed from cart!", "black");
   };
   return (

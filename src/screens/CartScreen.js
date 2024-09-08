@@ -35,39 +35,15 @@ const CartScreen = () => {
         </ScrollView>
         <View style={styles.checkoutContainer}>
           <View style={{ width: "65%" }}>
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-              }}
-            >
+            <View style={styles.checkOutShipping}>
               <Text>Shipping</Text>
               <Text style={{ color: "tomato" }}>{shippingPrice}</Text>
             </View>
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-              }}
-            >
-              <Text style={{ fontWeight: "bold", fontSize: 18 }}>
-                Total{" "}
-                <Text
-                  style={{
-                    color: "#B0B5B9",
-                    fontWeight: "normal",
-                    fontSize: 14,
-                  }}
-                >
-                  {" "}
-                  VAT included
-                </Text>
+            <View style={styles.totalPriceContainer}>
+              <Text style={styles.totalPriceText}>
+                Total <Text style={styles.vatText}> VAT included</Text>
               </Text>
-              <Text
-                style={{ fontWeight: "bold", fontSize: 18, color: "tomato" }}
-              >
-                {totalPrice}
-              </Text>
+              <Text style={styles.totalPriceNumber}>{totalPrice}</Text>
             </View>
           </View>
           <TouchableOpacity style={styles.checkoutButton}>
@@ -136,5 +112,20 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "600",
     fontSize: 18,
+  },
+  checkOutShipping: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  vatText: {
+    color: "#B0B5B9",
+    fontWeight: "normal",
+    fontSize: 14,
+  },
+  totalPriceText: { fontWeight: "bold", fontSize: 18 },
+  totalPriceNumber: { fontWeight: "bold", fontSize: 18, color: "tomato" },
+  totalPriceContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
 });

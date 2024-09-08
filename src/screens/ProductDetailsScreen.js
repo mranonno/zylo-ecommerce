@@ -39,17 +39,9 @@ const ProductDetailsScreen = ({ route }) => {
   };
   return (
     <View>
-      <ScrollView style={{ padding: 20 }}>
-        <View
-          style={{
-            backgroundColor: "white",
-            borderRadius: 28,
-            padding: 50,
-            flexDirection: "row",
-            justifyContent: "center",
-          }}
-        >
-          <Image style={{ width: "100%", height: 280 }} source={{ uri: url }} />
+      <ScrollView style={styles.mainContainer}>
+        <View style={styles.imageContainer}>
+          <Image style={styles.productImage} source={{ uri: url }} />
           <View style={styles.buttonMainContainer}>
             <TouchableOpacity onPress={handleAddToCart}>
               <Feather name="shopping-cart" size={24} color="black" />
@@ -64,18 +56,21 @@ const ProductDetailsScreen = ({ route }) => {
           </View>
         </View>
         <View style={{ padding: 10 }}>
-          <Text style={{ fontWeight: "900", fontSize: 28, color: "tomato" }}>
-            ${product.price}
+          <Text style={styles.productPriceText}>
+            ${product.price || "00.00"}
           </Text>
-          <Text style={{ fontSize: 24, fontWeight: 500 }}>{product.name}</Text>
+          <Text style={styles.productNameText}>
+            {product.name || "unavailable"}
+          </Text>
           <View>
-            <Text style={{ color: "#868D94", fontSize: 18 }}>
-              Model:SXD083, Black
+            <Text style={styles.productModelText}>
+              Model: {product.model || "unavailable"},{" "}
+              {product.color || "unavailable"}
             </Text>
           </View>
         </View>
         <View>
-          <Text style={{ fontSize: 16, lineHeight: 24 }}>
+          <Text style={styles.productDetailsText}>
             The Sony WH-1000XM5 Premium Wireless Headphones offer advanced noise
             cancellation with Dual Noise Sensor technology and a high-resolution
             audio experience featuring 40mm drivers and LDAC support. They
@@ -90,19 +85,9 @@ const ProductDetailsScreen = ({ route }) => {
         </View>
         <TouchableOpacity
           onPress={handleAddToCart}
-          style={{
-            paddingVertical: 12,
-            borderRadius: 12,
-            marginBottom: 40,
-            marginTop: 20,
-            backgroundColor: "tomato",
-            flexDirection: "row",
-            justifyContent: "center",
-          }}
+          style={styles.addToCartButton}
         >
-          <Text style={{ color: "white", fontSize: 18, fontWeight: 700 }}>
-            Add to cart
-          </Text>
+          <Text style={styles.addToCardButtonText}>Add to cart</Text>
         </TouchableOpacity>
       </ScrollView>
     </View>
@@ -112,6 +97,48 @@ const ProductDetailsScreen = ({ route }) => {
 export default ProductDetailsScreen;
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    padding: 20,
+  },
+  imageContainer: {
+    backgroundColor: "white",
+    borderRadius: 28,
+    padding: 50,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  productImage: { width: "100%", height: 280, resizeMode: "contain" },
+  productNameText: {
+    fontSize: 24,
+    fontWeight: 500,
+  },
+  productModelText: {
+    color: "#868D94",
+    fontSize: 18,
+  },
+  productPriceText: {
+    fontWeight: "900",
+    fontSize: 28,
+    color: "tomato",
+  },
+  productDetailsText: {
+    fontSize: 16,
+    lineHeight: 24,
+  },
+  addToCardButtonText: {
+    color: "white",
+    fontSize: 18,
+    fontWeight: 700,
+  },
+  addToCartButton: {
+    paddingVertical: 12,
+    borderRadius: 12,
+    marginBottom: 40,
+    marginTop: 20,
+    backgroundColor: "tomato",
+    flexDirection: "row",
+    justifyContent: "center",
+  },
   buttonMainContainer: {
     position: "absolute",
     bottom: 20,

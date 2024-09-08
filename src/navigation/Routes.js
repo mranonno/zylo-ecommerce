@@ -9,12 +9,13 @@ import ProductDetailsScreen from "../screens/ProductDetailsScreen";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { useLayoutEffect } from "react";
 import BrowseScreen from "../screens/BrowseScreen";
+import ComingSoonScreen from "../components/ComingSoonScreen";
 
 const HomeStack = createStackNavigator();
 // const BrowseStack = createStackNavigator();
 // const FavoritesStack = createStackNavigator();
 // const CartStack = createStackNavigator();
-// const ProfileStack = createStackNavigator();
+const ProfileStack = createStackNavigator();
 
 function HomeStackScreen({ navigation, route }) {
   const routeName = getFocusedRouteNameFromRoute(route);
@@ -38,6 +39,40 @@ function HomeStackScreen({ navigation, route }) {
         options={{ headerShown: true }}
       />
     </HomeStack.Navigator>
+  );
+}
+function ProfileStackScreen({ navigation, route }) {
+  const routeName = getFocusedRouteNameFromRoute(route);
+  useLayoutEffect(() => {
+    if (routeName === "Orders") {
+      navigation.setOptions({ tabBarStyle: { display: "none" } });
+    } else {
+      navigation.setOptions({ tabBarStyle: { display: "flex" } });
+    }
+  }, [navigation, routeName]);
+  return (
+    <ProfileStack.Navigator>
+      <ProfileStack.Screen
+        name="ProfileMain"
+        component={ProfileScreen}
+        options={{ headerShown: false }}
+      />
+      <ProfileStack.Screen
+        name="Orders"
+        component={ComingSoonScreen}
+        options={{ headerShown: true }}
+      />
+      <ProfileStack.Screen
+        name="EditProfiles"
+        component={ComingSoonScreen}
+        options={{ headerShown: true }}
+      />
+      <ProfileStack.Screen
+        name="Support"
+        component={ComingSoonScreen}
+        options={{ headerShown: true }}
+      />
+    </ProfileStack.Navigator>
   );
 }
 
@@ -91,9 +126,11 @@ const Routes = () => {
         component={CartScreen}
       />
       <Tab.Screen
-        options={{ headerShown: false }}
+        options={{
+          headerShown: false,
+        }}
         name="Profile"
-        component={ProfileScreen}
+        component={ProfileStackScreen}
       />
     </Tab.Navigator>
   );

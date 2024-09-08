@@ -9,7 +9,6 @@ import {
 import React, { useContext, useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import { MainContext } from "../Context/MainContext";
-import { useNavigation } from "@react-navigation/native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "../../Redux/Slice/ProductSlice";
@@ -17,7 +16,6 @@ import { setProducts } from "../../Redux/Slice/ProductSlice";
 const HomeScreen = () => {
   const categories = ["All", "Audio", "Mobile"];
   const { allProducts } = useContext(MainContext);
-  const navigation = useNavigation();
   const dispatch = useDispatch();
 
   const { top } = useSafeAreaInsets();
@@ -34,74 +32,37 @@ const HomeScreen = () => {
         <View style={styles.category}>
           {categories.map((category, index) => (
             <TouchableOpacity key={index}>
-              <Text style={{ fontSize: 16, fontWeight: 500 }}>{category}</Text>
+              <Text style={styles.categoryButton}>{category}</Text>
             </TouchableOpacity>
           ))}
         </View>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-            marginTop: 20,
-            marginBottom: 8,
-          }}
-        >
+        <View style={styles.dealContainer}>
           <Text style={styles.title}>Deals of the day</Text>
           <TouchableOpacity>
-            <Text style={{ color: "#868D94", fontSize: 16, fontWeight: 600 }}>
-              See all
-            </Text>
+            <Text style={styles.seeAllButton}>See all</Text>
           </TouchableOpacity>
         </View>
-        <View
-          style={{
-            backgroundColor: "white",
-            padding: 20,
-            borderRadius: 12,
-            flexDirection: "row",
-            gap: 32,
-          }}
-        >
+        <View style={styles.singleCardImageContainer}>
           <Image
-            style={{ width: 96, height: 96 }}
+            style={styles.singleCardImage}
             source={require("../../assets/image/microphone.png")}
           />
           <View>
-            <Text style={{ color: "#868D94", fontWeight: 600, fontSize: 16 }}>
-              Microphones
-            </Text>
-            <View style={{ flexDirection: "row", gap: 12 }}>
-              <Text style={{ color: "tomato", fontSize: 20, fontWeight: 900 }}>
-                $108.20
-              </Text>
-              <Text
-                style={{
-                  textDecorationLine: "line-through",
-                  fontSize: 16,
-                  color: "#868D94",
-                }}
-              >
-                $199.99
-              </Text>
+            <Text style={styles.singleCardCategoryText}>Microphones</Text>
+            <View style={styles.singleCardPriceContainer}>
+              <Text style={styles.singleCardPrice}>$108.20</Text>
+              <Text style={styles.singleCardDiscountPrice}>$199.99</Text>
             </View>
-            <Text style={{ fontWeight: 500, fontSize: 24 }}>RODE PodMic</Text>
-            <Text style={{ color: "#868D94" }}>
+            <Text style={styles.singleCardProductTitle}>RODE PodMic</Text>
+            <Text style={styles.SingleCardModelText}>
               Dynamic microphone, Speaker {"\n"}microphone
             </Text>
           </View>
         </View>
-        <View style={{ marginBottom: 8, marginTop: 28 }}>
+        <View style={styles.recommendedText}>
           <Text style={styles.title}>Recommended for you</Text>
         </View>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            rowGap: 20,
-          }}
-        >
+        <View style={styles.allProductContainer}>
           {allProducts?.map((product, index) => (
             <ProductCard product={product} key={index} />
           ))}
@@ -114,6 +75,58 @@ const HomeScreen = () => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+  SingleCardModelText: {
+    color: "#868D94",
+  },
+  categoryButton: {},
+  dealContainer: {},
+  seeAllButton: {
+    color: "#868D94",
+    fontSize: 16,
+    fontWeight: 600,
+  },
+  singleCardImageContainer: {
+    backgroundColor: "white",
+    padding: 20,
+    borderRadius: 12,
+    flexDirection: "row",
+    gap: 32,
+  },
+  singleCardImage: {
+    width: 96,
+    height: 96,
+    resizeMode: "contain",
+  },
+  singleCardCategoryText: {
+    color: "#868D94",
+    fontWeight: 600,
+    fontSize: 16,
+  },
+  singleCardPriceContainer: {
+    flexDirection: "row",
+    gap: 12,
+  },
+  singleCardProductTitle: {
+    fontWeight: 500,
+    fontSize: 24,
+  },
+  singleCardPrice: {
+    color: "tomato",
+    fontSize: 20,
+    fontWeight: 900,
+  },
+  singleCardDiscountPrice: {
+    textDecorationLine: "line-through",
+    fontSize: 16,
+    color: "#868D94",
+  },
+  recommendedText: { marginBottom: 8, marginTop: 28 },
+  allProductContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+    rowGap: 20,
+  },
   mainContainer: {
     flex: 1,
   },

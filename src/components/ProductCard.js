@@ -23,21 +23,10 @@ const ProductCard = ({ product }) => {
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate("ProductDetails", product)}
-      style={{ width: "48%" }}
+      style={styles.mainContainer}
     >
       <View>
-        <View
-          style={{
-            backgroundColor: "white",
-            borderRadius: 24,
-            padding: 30,
-            alignItems: "center",
-            justifyContent: "center",
-            height: 160,
-            marginBottom: 8,
-            position: "relative",
-          }}
-        >
+        <View style={styles.productImageContainer}>
           <TouchableOpacity
             onPress={handleFavorites}
             style={styles.favoriteButton}
@@ -48,17 +37,17 @@ const ProductCard = ({ product }) => {
               color={"tomato"}
             />
           </TouchableOpacity>
-          <Image
-            style={{ width: "85%", height: "100%" }}
-            source={{ uri: url }}
-          />
+          <Image style={styles.productImage} source={{ uri: url }} />
         </View>
-        <Text style={{ fontWeight: "900", fontSize: 20, color: "tomato" }}>
-          $90.30
+        <Text style={styles.productPriceText}>{product.price || "00:00"}</Text>
+        <Text style={styles.productNameText}>
+          {product.name || "unavailable"}
         </Text>
-        <Text style={{ fontSize: 16, fontWeight: 600 }}>{product.name}</Text>
         <View>
-          <Text style={{ color: "#868D94" }}>Model: SXD083, Black</Text>
+          <Text style={styles.productModelText}>
+            Model: {product.model || "unavailable"},{" "}
+            {product.color || "unavailable"}
+          </Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -68,6 +57,23 @@ const ProductCard = ({ product }) => {
 export default ProductCard;
 
 const styles = StyleSheet.create({
+  mainContainer: {},
+  productImage: {
+    width: "85%",
+    height: "100%",
+  },
+  productPriceText: {
+    fontWeight: "900",
+    fontSize: 20,
+    color: "tomato",
+  },
+  productNameText: {
+    fontSize: 16,
+    fontWeight: 600,
+  },
+  productModelText: {
+    color: "#868D94",
+  },
   favoriteButton: {
     position: "absolute",
     top: 5,
@@ -76,5 +82,15 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     backgroundColor: "#F2F3F5",
     zIndex: 1,
+  },
+  productImageContainer: {
+    backgroundColor: "white",
+    borderRadius: 24,
+    padding: 30,
+    alignItems: "center",
+    justifyContent: "center",
+    height: 160,
+    marginBottom: 8,
+    position: "relative",
   },
 });

@@ -11,64 +11,24 @@ import { AntDesign, Feather } from "@expo/vector-icons";
 
 const BrowseScreen = () => {
   const { top } = useSafeAreaInsets();
+  const categories = ["All", "Audio", "Mobile", "Electronics"];
   return (
     <View style={[styles.container, { paddingTop: top }]}>
       <View>
         <TextInput style={styles.input} placeholder="Search" />
-        <TouchableOpacity
-          style={{
-            position: "absolute",
-            right: 0,
-            top: 15,
-            backgroundColor: "tomato",
-            paddingVertical: 15,
-            paddingHorizontal: 30,
-            borderTopRightRadius: 12,
-            borderBottomRightRadius: 12,
-          }}
-        >
+        <TouchableOpacity style={styles.searchButton}>
           <Feather name="search" size={24} color={"white"} />
         </TouchableOpacity>
       </View>
-      <TouchableOpacity
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          paddingVertical: 14,
-          paddingHorizontal: 10,
-          backgroundColor: "white",
-          borderRadius: 12,
-          marginBottom: 2,
-        }}
-      >
+      <TouchableOpacity style={styles.categoryTitle}>
         <Text>Audio</Text>
         <AntDesign name="right" size={24} color={"#868D94"} />
       </TouchableOpacity>
-      <TouchableOpacity
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          paddingVertical: 14,
-          paddingHorizontal: 10,
-          backgroundColor: "white",
-          borderRadius: 12,
-          marginBottom: 2,
-        }}
-      >
+      <TouchableOpacity style={styles.categoryTitle}>
         <Text>Mobile</Text>
         <AntDesign name="right" size={24} color={"#868D94"} />
       </TouchableOpacity>
-      <TouchableOpacity
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          paddingVertical: 14,
-          paddingHorizontal: 10,
-          backgroundColor: "white",
-          borderRadius: 12,
-          marginBottom: 2,
-        }}
-      >
+      <TouchableOpacity style={styles.categoryTitle}>
         <Text>Electronics</Text>
         <AntDesign name="right" size={24} color={"#868D94"} />
       </TouchableOpacity>
@@ -93,5 +53,24 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 12,
     marginBottom: 20,
+  },
+  searchButton: {
+    position: "absolute",
+    right: 0,
+    top: 15,
+    backgroundColor: "tomato",
+    paddingVertical: 15,
+    paddingHorizontal: 30,
+    borderTopRightRadius: 12,
+    borderBottomRightRadius: 12,
+  },
+  categoryTitle: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingVertical: 14,
+    paddingHorizontal: 10,
+    backgroundColor: "white",
+    borderRadius: 12,
+    marginBottom: 2,
   },
 });
