@@ -16,7 +16,8 @@ const CartScreen = () => {
   const shippingPrice = 10 * carts.length;
   const price = carts.reduce((total, cart) => total + cart.price, 0);
   console.log("price", JSON.stringify(price, null, 1));
-  const totalPrice = price + shippingPrice;
+  const initialTotalPrice = price + shippingPrice;
+  const totalPrice = initialTotalPrice.toFixed(2);
 
   console.log("totalPrice", JSON.stringify(totalPrice, null, 1));
   console.log("shippingPrice", JSON.stringify(shippingPrice, null, 1));

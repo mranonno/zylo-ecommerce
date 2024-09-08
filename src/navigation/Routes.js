@@ -10,6 +10,7 @@ import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { useLayoutEffect } from "react";
 import BrowseScreen from "../screens/BrowseScreen";
 import ComingSoonScreen from "../components/ComingSoonScreen";
+import CategoriesViewsScreen from "../screens/CategoriesViewsScreen";
 
 const HomeStack = createStackNavigator();
 // const BrowseStack = createStackNavigator();
@@ -36,7 +37,12 @@ function HomeStackScreen({ navigation, route }) {
       <HomeStack.Screen
         name="ProductDetails"
         component={ProductDetailsScreen}
-        options={{ headerShown: true }}
+        options={{ headerShown: true, headerTitle: "Product Details" }}
+      />
+      <HomeStack.Screen
+        name="Categories"
+        component={CategoriesViewsScreen}
+        options={{ headerShown: true, headerTitle: "Product Details" }}
       />
     </HomeStack.Navigator>
   );
@@ -65,7 +71,7 @@ function ProfileStackScreen({ navigation, route }) {
       <ProfileStack.Screen
         name="EditProfiles"
         component={ComingSoonScreen}
-        options={{ headerShown: true }}
+        options={{ headerShown: true, headerTitle: "Edit Profile" }}
       />
       <ProfileStack.Screen
         name="Support"
@@ -75,17 +81,17 @@ function ProfileStackScreen({ navigation, route }) {
       <ProfileStack.Screen
         name="DeliveryAndReturn"
         component={ComingSoonScreen}
-        options={{ headerShown: true }}
+        options={{ headerShown: true, headerTitle: "Delivery & Return" }}
       />
       <ProfileStack.Screen
         name="TermsAndCondition"
         component={ComingSoonScreen}
-        options={{ headerShown: true }}
+        options={{ headerShown: true, headerTitle: "Terms & Condition" }}
       />
       <ProfileStack.Screen
         name="PrivacyPolicy"
         component={ComingSoonScreen}
-        options={{ headerShown: true }}
+        options={{ headerShown: true, headerTitle: "Privacy Policy" }}
       />
     </ProfileStack.Navigator>
   );

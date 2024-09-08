@@ -1,34 +1,102 @@
 [
   {
     "id": "1",
-    "image": "https://i.ibb.co/CK6PnS0/headphone-Black.png",
-    "price": 89,
+    "image": "https://i.postimg.cc/kG3x8Kfy/headphone-Black.png",
+    "price": 89.67,
     "name": "Noise Cancelling Headphones",
     "model": "NC2000",
-    "color": "Black"
+    "color": "Black",
+    "description": "Immerse yourself in high-quality sound with the NC2000 Noise Cancelling Headphones. These headphones are equipped with advanced noise-cancellation technology, allowing you to enjoy your music, podcasts, or calls without the distraction of background noise. The soft, cushioned ear cups and adjustable headband ensure a comfortable fit for long listening sessions. Ideal for travel, work, or leisure, the NC2000 offers up to 20 hours of battery life, making it a reliable companion for your audio needs.",
+    "category": "Headphones"
   },
   {
     "id": "2",
-    "image": "https://i.ibb.co/cyF59pB/headphone-White.png",
-    "price": 129,
+    "image": "https://i.postimg.cc/Xqf9gqP6/headphone-White.png",
+    "price": 129.77,
     "name": "Wireless Over-Ear Headphones",
     "model": "WO3000",
-    "color": "Silver"
+    "color": "White",
+    "description": "The WO3000 Wireless Over-Ear Headphones provide an unmatched audio experience with deep bass, crystal-clear highs, and balanced mids. These headphones feature Bluetooth 5.0 for a seamless wireless connection and support for voice assistants like Siri and Google Assistant. The over-ear design ensures full ear coverage for better sound isolation, while the long-lasting battery offers up to 30 hours of playtime on a single charge. Whether you're on the go or relaxing at home, these headphones deliver premium sound quality and comfort.",
+    "category": "Headphones"
   },
   {
     "id": "3",
-    "image": "https://i.ibb.co/CK6PnS0/headphone-Black.png",
-    "price": 79,
-    "name": "In-Ear Bluetooth Headphones",
-    "model": "IE4000",
-    "color": "Blue"
+    "image": "https://i.postimg.cc/WbVG1mDN/ear-Phone-Black.png",
+    "price": 139.56,
+    "name": "SAMSUNG Galaxy Buds 2 Pro",
+    "model": "SG85HD",
+    "color": "Black",
+    "description": "The SAMSUNG Galaxy Buds 2 Pro are designed for audiophiles who demand superior sound in a compact, wireless form. With enhanced Active Noise Cancellation (ANC) and Ambient Sound modes, you can easily switch between immersive sound and environmental awareness. These earbuds feature high-fidelity audio and a secure, ergonomic fit that stays comfortable throughout the day. Whether you're listening to music, taking calls, or working out, the Galaxy Buds 2 Pro deliver clear, powerful sound with a battery that lasts up to 8 hours per charge and 28 hours with the charging case.",
+    "category": "Earbuds"
   },
   {
     "id": "4",
-    "image": "https://i.ibb.co/cyF59pB/headphone-White.png",
-    "price": 79,
-    "name": "In-Ear Bluetooth Headphones",
-    "model": "IE4000",
-    "color": "Blue"
+    "image": "https://i.postimg.cc/bwDwXWzs/ear-Phone-White.png",
+    "price": 79.87,
+    "name": "APPLE AirPods Pro MagSafe Case",
+    "model": "AE4000",
+    "color": "White",
+    "description": "The APPLE AirPods Pro are the ultimate wireless earbuds for those who value sound quality, convenience, and seamless integration with Apple devices. With Active Noise Cancellation and Transparency Mode, you can choose to block out the world or stay aware of your surroundings. The custom-designed drivers deliver rich, immersive sound, while the adaptive EQ automatically tunes the music to your ears. The included MagSafe case allows for wireless charging and provides up to 24 hours of battery life. Perfect for workouts, travel, or daily use, the AirPods Pro offer premium sound and comfort.",
+    "category": "Earbuds"
+  },
+  {
+    "id": "5",
+    "image": "https://i.postimg.cc/7ZXHv4z1/watch.png",
+    "price": 199.99,
+    "name": "Fitness Smartwatch Pro",
+    "model": "FSP700",
+    "color": "Black",
+    "description": "The Fitness Smartwatch Pro is designed to help you stay active, healthy, and connected. Equipped with a range of fitness tracking features, including heart rate monitoring, sleep analysis, and GPS for tracking outdoor activities, this smartwatch is perfect for fitness enthusiasts. It also offers smart notifications, allowing you to receive calls, messages, and app alerts directly on your wrist. With a durable, water-resistant design and up to 7 days of battery life, the FSP700 is both stylish and practical for everyday wear, whether you're at the gym, the office, or exploring the outdoors.",
+    "category": "Smartwatch"
+  },
+  {
+    "id": "6",
+    "image": "https://i.postimg.cc/GtkRXnry/phone.png",
+    "price": 799.99,
+    "name": "Ultra Performance Phone",
+    "model": "UPX10",
+    "color": "Blue",
+    "description": "The Ultra Performance Phone UPX10 is a powerhouse device with a sleek design, offering cutting-edge technology for both work and entertainment. Powered by a high-speed processor and 12GB of RAM, it handles multitasking, gaming, and video streaming with ease. The 6.8-inch OLED display delivers vibrant colors and stunning clarity, perfect for watching movies or editing photos. Equipped with a 108MP triple camera system, it captures professional-quality images and 8K video. The large battery supports fast charging and lasts up to 48 hours, ensuring you stay connected all day long. With 5G connectivity, the UPX10 is future-ready for high-speed mobile networks.",
+    "category": "Phone"
+  },
+  {
+    "id": "7",
+    "image": "https://i.postimg.cc/PfLPmCwg/Sony-Alpha-DSLR.png",
+    "price": 1199.99,
+    "name": "Sony A6400 Mirrorless Camera",
+    "model": "A6400",
+    "color": "Black",
+    "description": "The Sony A6400 Mirrorless Camera is a versatile, compact powerhouse ideal for both photography enthusiasts and professionals. Featuring a 24.2MP APS-C sensor, it delivers stunning image quality with impressive detail, even in low light conditions. The camera's fast autofocus system, with 425 phase-detection points, ensures sharp focus on moving subjects. Paired with the 18-135mm lens, it offers excellent zoom range for capturing wide landscapes, portraits, and close-up details. With 4K video recording, high-speed continuous shooting, and a durable, weather-sealed body, the A6400 is designed for both creative flexibility and durability in any environment.",
+    "category": "Camera"
+  },
+  {
+    "id": "8",
+    "image": "https://i.postimg.cc/0Q41k25m/monitor.png",
+    "price": 179.99,
+    "name": "Hikvision DS-D5FN10 21.5\" Full HD Monitor",
+    "model": "DS-D5FN10",
+    "color": "Black",
+    "description": "The Hikvision DS-D5022FN10 is a high-quality 21.5-inch Full HD monitor designed for both professional and personal use. Featuring a resolution of 1920x1080 pixels, it delivers crisp, clear visuals with vibrant colors and sharp detail. The monitor's slim design and narrow bezels provide a modern, sleek look that complements any workspace. Equipped with advanced display technology, the DS-D5022FN10 ensures excellent image quality and color accuracy, making it ideal for tasks such as graphic design, video editing, and general computing. It also includes multiple connectivity options, including HDMI and VGA ports, for versatile setup options. The monitor's adjustable stand allows for comfortable viewing angles, and its low blue light mode helps reduce eye strain during extended use.",
+    "category": "Monitor"
+  },
+  {
+    "id": "9",
+    "image": "https://i.postimg.cc/7ZrDJ63n/ups.png",
+    "price": 89.99,
+    "name": "Digital X 650VA Offline UPS",
+    "model": "DX650",
+    "color": "Black",
+    "description": "The Digital X 650VA Offline UPS provides reliable power backup and surge protection for your electronic devices. With a capacity of 650VA, this UPS is ideal for small to medium-sized office setups or home environments. It features a compact design and efficient performance, ensuring uninterrupted power supply during outages and protecting your equipment from power surges and fluctuations. The UPS includes a built-in battery that offers sufficient backup time to safely shut down your systems or continue essential operations. Its user-friendly interface and LED indicators make it easy to monitor the status of the UPS, while its durable construction ensures long-term reliability and performance.",
+    "category": "UPS"
+  },
+  {
+    "id": "10",
+    "image": "https://i.postimg.cc/MZ4zxtX4/router.png",
+    "price": 49.99,
+    "name": "TP-Link TL-WR841N Wireless Router",
+    "model": "TL-WR841N",
+    "color": "White",
+    "description": "The TP-Link TL-WR841N 300Mbps Wireless Router offers fast and reliable wireless connectivity for your home or small office network. With a maximum speed of 300Mbps, it ensures smooth streaming, gaming, and browsing experiences. The router features 3 fixed antennas for enhanced wireless coverage and a stable connection throughout your space. It includes multiple LAN ports for wired connections and a user-friendly interface for easy setup and management. The TL-WR841N also supports WPA/WPA2 encryption to keep your network secure. Its compact design and reliable performance make it a great choice for both basic and advanced networking needs.",
+    "category": "Networking"
   }
 ]

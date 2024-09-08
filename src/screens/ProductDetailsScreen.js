@@ -71,16 +71,7 @@ const ProductDetailsScreen = ({ route }) => {
         </View>
         <View>
           <Text style={styles.productDetailsText}>
-            The Sony WH-1000XM5 Premium Wireless Headphones offer advanced noise
-            cancellation with Dual Noise Sensor technology and a high-resolution
-            audio experience featuring 40mm drivers and LDAC support. They
-            provide up to 30 hours of battery life with noise-cancelling on and
-            quick charge capability, comfortable ear pads for extended use, and
-            intuitive touch controls. Bluetooth 5.2 ensures stable connectivity,
-            while compatibility with Google Assistant and Amazon Alexa enhances
-            hands-free control. Additional features include adaptive sound
-            control, environmental awareness, and customizable sound settings
-            through the Sony Headphones Connect app.
+            {product.description || "unavailable"}
           </Text>
         </View>
         <TouchableOpacity

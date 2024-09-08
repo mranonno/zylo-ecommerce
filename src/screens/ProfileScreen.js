@@ -24,7 +24,7 @@ const ProfileScreen = () => {
             <Text style={styles.userName}>Michael Ford</Text>
             <Text style={styles.userEmail}>Email: michael@gmail.com</Text>
           </View>
-          <FontAwesome name="user-circle-o" size={32} color={"black"} />
+          <FontAwesome name="user-circle-o" size={36} color={"black"} />
         </View>
         <TouchableOpacity
           onPress={() => navigation.navigate("Orders")}
@@ -91,10 +91,7 @@ const ProfileScreen = () => {
           </View>
           <MaterialIcons name="policy" size={24} color={"black"} />
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("DeliveryAndReturn")}
-          style={styles.profileSectionSingleLine}
-        >
+        <TouchableOpacity style={styles.profileSectionSingleLine}>
           <View>
             <Text style={styles.textTitle}>Rate the app</Text>
           </View>

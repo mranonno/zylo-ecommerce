@@ -1,44 +1,86 @@
 import {
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { AntDesign, Feather } from "@expo/vector-icons";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import ProductCard from "../components/ProductCard";
+import { useNavigation } from "@react-navigation/native";
 
 const BrowseScreen = () => {
-  // const { products } = useSelector((state) => state.products);
-  // const [searchQuery, setSearchQuery] = useState("");
-  //  const filteredProducts = products.filter((product) =>
-  //    product.name.toLowerCase().includes(searchQuery.toLowerCase())
-  //  );
+  const navigation = useNavigation();
+  const { products } = useSelector((state) => state.products);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [contentScreen, setContentScreen] = useState(true);
+  const handleSearch = () => {
+    if (searchQuery == "") {
+      setContentScreen(true);
+    } else {
+      const filtered = products.filter((product) =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredProducts(filtered);
+      setContentScreen(false);
+    }
+  };
+  console.log("products", JSON.stringify(contentScreen, null, 1));
 
   const { top } = useSafeAreaInsets();
-  // const categories = ["All", "Audio", "Mobile", "Electronics"];
+  const categories = [
+    "All",
+    "Headphones",
+    "Earbuds",
+    "Smartwatch",
+    "Phone",
+    "Camera",
+    "Monitor",
+    "UPS",
+    "Networking",
+  ];
   return (
     <View style={[styles.container, { paddingTop: top }]}>
       <View>
-        <TextInput style={styles.input} placeholder="Search" />
-        <TouchableOpacity style={styles.searchButton}>
+        <TextInput
+          style={styles.input}
+          placeholder="Search"
+          value={searchQuery}
+          onChangeText={(text) => setSearchQuery(text)}
+        />
+        <TouchableOpacity onPress={handleSearch} style={styles.searchButton}>
           <Feather name="search" size={24} color={"white"} />
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.categoryTitle}>
-        <Text>Audio</Text>
-        <AntDesign name="right" size={24} color={"#868D94"} />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.categoryTitle}>
-        <Text>Mobile</Text>
-        <AntDesign name="right" size={24} color={"#868D94"} />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.categoryTitle}>
-        <Text>Electronics</Text>
-        <AntDesign name="right" size={24} color={"#868D94"} />
-      </TouchableOpacity>
+      <View>
+        {contentScreen == true ? (
+          categories.map((category, index) => (
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Categories", category)}
+              key={index}
+              style={styles.categoryTitle}
+            >
+              <Text>{category}</Text>
+              <AntDesign name="right" size={24} color={"#868D94"} />
+            </TouchableOpacity>
+          ))
+        ) : filteredProducts.length < 1 ? (
+          <Text style={{ alignSelf: "center", fontSize: 18 }}>
+            Not found...
+          </Text>
+        ) : (
+          <ScrollView contentContainerStyle={styles.productContainer}>
+            {filteredProducts.map((product, index) => (
+              <ProductCard key={index} product={product}></ProductCard>
+            ))}
+          </ScrollView>
+        )}
+      </View>
     </View>
   );
 };
@@ -79,5 +121,11 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 12,
     marginBottom: 2,
+  },
+  productContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+    rowGap: 20,
   },
 });

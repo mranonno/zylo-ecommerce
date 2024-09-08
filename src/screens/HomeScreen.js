@@ -78,8 +78,14 @@ const styles = StyleSheet.create({
   SingleCardModelText: {
     color: "#868D94",
   },
-  categoryButton: {},
-  dealContainer: {},
+  categoryButton: { fontSize: 16 },
+  dealContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: 25,
+    marginBottom: 10,
+  },
   seeAllButton: {
     color: "#868D94",
     fontSize: 16,
@@ -120,7 +126,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#868D94",
   },
-  recommendedText: { marginBottom: 8, marginTop: 28 },
+  recommendedText: { marginBottom: 10, marginTop: 28 },
   allProductContainer: {
     flexDirection: "row",
     justifyContent: "space-between",

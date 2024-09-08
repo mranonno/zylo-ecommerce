@@ -33,13 +33,13 @@ const ProductCard = ({ product }) => {
           >
             <AntDesign
               name={isFavorite ? "heart" : "hearto"}
-              size={24}
+              size={20}
               color={"tomato"}
             />
           </TouchableOpacity>
           <Image style={styles.productImage} source={{ uri: url }} />
         </View>
-        <Text style={styles.productPriceText}>{product.price || "00:00"}</Text>
+        <Text style={styles.productPriceText}>${product.price || "00:00"}</Text>
         <Text style={styles.productNameText}>
           {product.name || "unavailable"}
         </Text>
