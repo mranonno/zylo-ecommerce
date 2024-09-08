@@ -3,8 +3,10 @@ import React, { useContext } from "react";
 import { AntDesign, Feather } from "@expo/vector-icons";
 import { MainContext } from "../Context/MainContext";
 import { showToast } from "./HelpingComponents";
+import { useNavigation } from "@react-navigation/native";
 
 const FavoriteCard = ({ product }) => {
+  const navigation = useNavigation();
   const { removeFromFavorite, addToCart, carts } = useContext(MainContext);
   const url = product.image;
   const handleRemoveFromFavorite = () => {
@@ -22,7 +24,10 @@ const FavoriteCard = ({ product }) => {
     }
   };
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("ProductDetails", product)}
+      style={styles.container}
+    >
       <View style={styles.imageContainer}>
         <Image style={styles.cardImage} source={{ uri: url }} />
       </View>
@@ -43,7 +48,7 @@ const FavoriteCard = ({ product }) => {
           <AntDesign name="heart" size={24} color="tomato" />
         </TouchableOpacity>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

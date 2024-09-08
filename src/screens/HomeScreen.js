@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   seeAllButton: {
     color: "#868D94",
     fontSize: 16,
-    fontWeight: 600,
+    fontWeight: "600",
   },
   singleCardImageContainer: {
     backgroundColor: "white",
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   },
   singleCardCategoryText: {
     color: "#868D94",
-    fontWeight: 600,
+    fontWeight: "600",
     fontSize: 16,
   },
   singleCardPriceContainer: {
@@ -107,13 +107,13 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   singleCardProductTitle: {
-    fontWeight: 500,
+    fontWeight: "500",
     fontSize: 24,
   },
   singleCardPrice: {
     color: "tomato",
     fontSize: 20,
-    fontWeight: 900,
+    fontWeight: "900",
   },
   singleCardDiscountPrice: {
     textDecorationLine: "line-through",

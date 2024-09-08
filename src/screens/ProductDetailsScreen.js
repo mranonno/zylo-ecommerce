@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   productImage: { width: "100%", height: 280, resizeMode: "contain" },
   productNameText: {
     fontSize: 24,
-    fontWeight: 500,
+    fontWeight: "500",
   },
   productModelText: {
     color: "#868D94",
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
   addToCardButtonText: {
     color: "white",
     fontSize: 18,
-    fontWeight: 700,
+    fontWeight: "700",
   },
   addToCartButton: {
     paddingVertical: 12,

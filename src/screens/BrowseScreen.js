@@ -8,10 +8,17 @@ import {
 import React from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { AntDesign, Feather } from "@expo/vector-icons";
+// import { useSelector } from "react-redux";
 
 const BrowseScreen = () => {
+  // const { products } = useSelector((state) => state.products);
+  // const [searchQuery, setSearchQuery] = useState("");
+  //  const filteredProducts = products.filter((product) =>
+  //    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  //  );
+
   const { top } = useSafeAreaInsets();
-  const categories = ["All", "Audio", "Mobile", "Electronics"];
+  // const categories = ["All", "Audio", "Mobile", "Electronics"];
   return (
     <View style={[styles.container, { paddingTop: top }]}>
       <View>

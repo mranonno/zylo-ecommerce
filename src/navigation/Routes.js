@@ -72,6 +72,21 @@ function ProfileStackScreen({ navigation, route }) {
         component={ComingSoonScreen}
         options={{ headerShown: true }}
       />
+      <ProfileStack.Screen
+        name="DeliveryAndReturn"
+        component={ComingSoonScreen}
+        options={{ headerShown: true }}
+      />
+      <ProfileStack.Screen
+        name="TermsAndCondition"
+        component={ComingSoonScreen}
+        options={{ headerShown: true }}
+      />
+      <ProfileStack.Screen
+        name="PrivacyPolicy"
+        component={ComingSoonScreen}
+        options={{ headerShown: true }}
+      />
     </ProfileStack.Navigator>
   );
 }
@@ -81,19 +96,19 @@ const Routes = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color }) => {
+        tabBarIcon: ({ color }) => {
           let iconName;
 
           if (route.name === "Home") {
-            iconName = focused ? "home" : "home";
+            iconName = "home";
           } else if (route.name === "Cart") {
-            iconName = focused ? "opencart" : "opencart";
+            iconName = "opencart";
           } else if (route.name === "Profile") {
-            iconName = focused ? "user" : "user";
+            iconName = "user";
           } else if (route.name === "Browse") {
-            iconName = focused ? "search" : "search";
+            iconName = "search";
           } else if (route.name === "Favorites") {
-            iconName = focused ? "heart" : "heart";
+            iconName = "heart";
           }
           return <FontAwesome5 name={iconName} size={22} color={color} />;
         },

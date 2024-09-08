@@ -56,7 +56,10 @@ const ProfileScreen = () => {
           </View>
           <MaterialIcons name="support-agent" size={24} color={"black"} />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.profileSectionSingleLine}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("DeliveryAndReturn")}
+          style={styles.profileSectionSingleLine}
+        >
           <View>
             <Text style={styles.textTitle}>Delivery & Return policy</Text>
           </View>
@@ -66,7 +69,10 @@ const ProfileScreen = () => {
             color={"black"}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.profileSectionSingleLine}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("TermsAndCondition")}
+          style={styles.profileSectionSingleLine}
+        >
           <View>
             <Text style={styles.textTitle}>Terms & Condition</Text>
           </View>
@@ -76,13 +82,19 @@ const ProfileScreen = () => {
             color={"black"}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.profileSectionSingleLine}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("PrivacyPolicy")}
+          style={styles.profileSectionSingleLine}
+        >
           <View>
             <Text style={styles.textTitle}>Privacy policies</Text>
           </View>
           <MaterialIcons name="policy" size={24} color={"black"} />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.profileSectionSingleLine}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("DeliveryAndReturn")}
+          style={styles.profileSectionSingleLine}
+        >
           <View>
             <Text style={styles.textTitle}>Rate the app</Text>
           </View>

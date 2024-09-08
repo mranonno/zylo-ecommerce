@@ -57,10 +57,11 @@ const ProductCard = ({ product }) => {
 export default ProductCard;
 
 const styles = StyleSheet.create({
-  mainContainer: {},
+  mainContainer: { width: "48%" },
   productImage: {
     width: "85%",
     height: "100%",
+    resizeMode: "contain",
   },
   productPriceText: {
     fontWeight: "900",
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
   },
   productNameText: {
     fontSize: 16,
-    fontWeight: 600,
+    fontWeight: "600",
   },
   productModelText: {
     color: "#868D94",
