@@ -1,10 +1,13 @@
 import React, { createContext, useState } from "react";
 import allProduct from "../../assets/allProducts.json";
+import bannerProduct from "../../assets/bannerProducts.json";
+
 export const MainContext = createContext();
 const MyProvider = ({ children }) => {
   const [allProducts, setAllProducts] = useState(allProduct);
   const [carts, setCarts] = useState([]);
   const [favorites, setFavorites] = useState([]);
+  const [bannerProducts, setBannerProducts] = useState(bannerProduct);
   const categories = [
     "All",
     "Headphones",
@@ -53,6 +56,7 @@ const MyProvider = ({ children }) => {
     addToFavorite,
     removeFromFavorite,
     categories,
+    bannerProducts,
   };
   return <MainContext.Provider value={value}>{children}</MainContext.Provider>;
 };

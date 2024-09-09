@@ -4,36 +4,60 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Image,
 } from "react-native";
 import React, { useContext } from "react";
 import CartCard from "../components/CartCard";
 import { MainContext } from "../Context/MainContext";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import shoppingCartEmpty from "..//../assets/shopping.png";
 
 const CartScreen = () => {
   const { carts } = useContext(MainContext);
   const { top } = useSafeAreaInsets();
   const shippingPrice = 10 * carts.length;
   const price = carts.reduce((total, cart) => total + cart.price, 0);
-  console.log("price", JSON.stringify(price, null, 1));
   const initialTotalPrice = price + shippingPrice;
   const totalPrice = initialTotalPrice.toFixed(2);
-
-  console.log("totalPrice", JSON.stringify(totalPrice, null, 1));
-  console.log("shippingPrice", JSON.stringify(shippingPrice, null, 1));
   return (
     <View style={[styles.container, { paddingTop: top }]}>
       <View style={[styles.stickyHeader, { paddingTop: top }]}>
         <Text style={styles.cart}>Cart</Text>
       </View>
       <View style={styles.contentContainer}>
-        <ScrollView contentContainerStyle={styles.scrollContainer}>
-          <View style={styles.cartContainer}>
-            {carts?.map((product, index) => (
-              <CartCard product={product} key={index} />
-            ))}
+        {carts.length < 1 ? (
+          <View
+            style={{
+              alignItems: "center",
+              top: "30%",
+            }}
+          >
+            <Image
+              style={{ resizeMode: "contain", width: "60%" }}
+              source={shoppingCartEmpty}
+            />
+            <Text
+              style={{
+                color: "#3d4f9d",
+                fontSize: 24,
+                fontWeight: "500",
+                marginBottom: 10,
+              }}
+            >
+              Opps!!
+            </Text>
+            <Text>Your shopping cart is empty!</Text>
           </View>
-        </ScrollView>
+        ) : (
+          <ScrollView contentContainerStyle={styles.scrollContainer}>
+            <View style={styles.cartContainer}>
+              {carts?.map((product, index) => (
+                <CartCard product={product} key={index} />
+              ))}
+            </View>
+          </ScrollView>
+        )}
+
         <View style={styles.checkoutContainer}>
           <View style={{ width: "65%" }}>
             <View style={styles.checkOutShipping}>

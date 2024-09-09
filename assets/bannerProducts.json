@@ -1,0 +1,10 @@
+{
+  "id": "1",
+  "image": "https://i.postimg.cc/g096w6dD/microphone.png",
+  "price": 99.99,
+  "name": "RODE PodMic Dynamic Microphone",
+  "model": "PodMic",
+  "color": "Black",
+  "description": "The RODE PodMic is a broadcast-quality dynamic microphone specifically designed for podcasting, streaming, and voiceover work. With a built-in pop filter and rugged construction, it ensures clear, professional audio with minimal distortion. The dynamic capsule offers rich, balanced sound with excellent off-axis rejection, making it ideal for both solo and group recordings in untreated environments. The PodMic is compatible with all XLR audio interfaces and mixers, providing flexibility and high-fidelity sound for any audio setup. Its compact design and durable metal construction make it a long-lasting tool for professional audio production.",
+  "category": "Microphone"
+}

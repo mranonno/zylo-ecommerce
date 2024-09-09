@@ -15,8 +15,7 @@ import { setProducts } from "../../Redux/Slice/ProductSlice";
 import { useNavigation } from "@react-navigation/native";
 
 const HomeScreen = () => {
-  const { categories } = useContext(MainContext);
-  const { allProducts } = useContext(MainContext);
+  const { allProducts, categories, bannerProducts } = useContext(MainContext);
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const { top } = useSafeAreaInsets();
@@ -29,7 +28,11 @@ const HomeScreen = () => {
     <View style={[styles.mainContainer, { paddingTop: top }]}>
       <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.userName}>Hello Michael</Text>
-        <View style={styles.category}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.category}
+        >
           {categories.map((category, index) => (
             <TouchableOpacity
               onPress={() => navigation.navigate("Categories", category)}
@@ -38,7 +41,7 @@ const HomeScreen = () => {
               <Text style={styles.categoryButton}>{category}</Text>
             </TouchableOpacity>
           ))}
-        </View>
+        </ScrollView>
         <View style={styles.dealContainer}>
           <Text style={styles.title}>Deals of the day</Text>
           <TouchableOpacity>
