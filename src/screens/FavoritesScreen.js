@@ -1,8 +1,9 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import React, { useContext } from "react";
 import FavoriteCard from "../components/FavoriteCard";
 import { MainContext } from "../Context/MainContext";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import favoriteEmpty from "../../assets/favorite.png";
 
 const FavoritesScreen = () => {
   const { top } = useSafeAreaInsets();
@@ -12,13 +13,21 @@ const FavoritesScreen = () => {
       <View style={[styles.stickyHeader, { paddingTop: top }]}>
         <Text style={styles.favorites}>Favorites</Text>
       </View>
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <View style={styles.favoritesContainer}>
-          {favorites.map((product, index) => (
-            <FavoriteCard product={product} key={index} />
-          ))}
+      {favorites.length < 1 ? (
+        <View style={styles.emptyContainer}>
+          <Image style={styles.emptyImage} source={favoriteEmpty} />
+          <Text style={styles.emptyText}>Opps!!</Text>
+          <Text>Your favorites list is empty!</Text>
         </View>
-      </ScrollView>
+      ) : (
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
+          <View style={styles.favoritesContainer}>
+            {favorites.map((product, index) => (
+              <FavoriteCard product={product} key={index} />
+            ))}
+          </View>
+        </ScrollView>
+      )}
     </View>
   );
 };
@@ -26,6 +35,20 @@ const FavoritesScreen = () => {
 export default FavoritesScreen;
 
 const styles = StyleSheet.create({
+  emptyContainer: {
+    alignItems: "center",
+    top: "30%",
+  },
+  emptyText: {
+    color: "#3d4f9d",
+    fontSize: 24,
+    fontWeight: "500",
+    marginBottom: 10,
+  },
+  emptyImage: {
+    resizeMode: "contain",
+    width: "50%",
+  },
   mainContainer: {
     backgroundColor: "#F2F3F5",
     flex: 1,

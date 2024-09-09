@@ -26,26 +26,9 @@ const CartScreen = () => {
       </View>
       <View style={styles.contentContainer}>
         {carts.length < 1 ? (
-          <View
-            style={{
-              alignItems: "center",
-              top: "30%",
-            }}
-          >
-            <Image
-              style={{ resizeMode: "contain", width: "60%" }}
-              source={shoppingCartEmpty}
-            />
-            <Text
-              style={{
-                color: "#3d4f9d",
-                fontSize: 24,
-                fontWeight: "500",
-                marginBottom: 10,
-              }}
-            >
-              Opps!!
-            </Text>
+          <View style={styles.emptyContainer}>
+            <Image style={styles.emptyImage} source={shoppingCartEmpty} />
+            <Text style={styles.emptyText}>Opps!!</Text>
             <Text>Your shopping cart is empty!</Text>
           </View>
         ) : (
@@ -83,6 +66,20 @@ const CartScreen = () => {
 export default CartScreen;
 
 const styles = StyleSheet.create({
+  emptyContainer: {
+    alignItems: "center",
+    top: "33%",
+  },
+  emptyImage: {
+    resizeMode: "contain",
+    width: "60%",
+  },
+  emptyText: {
+    color: "#3d4f9d",
+    fontSize: 24,
+    fontWeight: "500",
+    marginBottom: 10,
+  },
   container: {
     flex: 1,
     backgroundColor: "#F2F3F5",

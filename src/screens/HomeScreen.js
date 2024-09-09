@@ -19,6 +19,7 @@ const HomeScreen = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const { top } = useSafeAreaInsets();
+  console.log("bannerProducts", JSON.stringify(bannerProducts, null, 1));
 
   useEffect(() => {
     dispatch(setProducts(allProducts));
@@ -48,7 +49,10 @@ const HomeScreen = () => {
             <Text style={styles.seeAllButton}>See all</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.singleCardImageContainer}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("ProductDetails", bannerProducts)}
+          style={styles.singleCardImageContainer}
+        >
           <Image
             style={styles.singleCardImage}
             source={require("../../assets/image/microphone.png")}
@@ -64,7 +68,7 @@ const HomeScreen = () => {
               Dynamic microphone, Speaker {"\n"}microphone
             </Text>
           </View>
-        </View>
+        </TouchableOpacity>
         <View style={styles.recommendedText}>
           <Text style={styles.title}>Recommended for you</Text>
         </View>

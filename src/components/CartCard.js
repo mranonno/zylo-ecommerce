@@ -25,7 +25,7 @@ const CartCard = ({ product }) => {
           {product.name || "Unavailable"}
         </Text>
         <Text style={styles.productModelText}>
-          {product.model}, {product.color}
+          Model: {product.model}, {product.color}
         </Text>
       </View>
       <View style={styles.buttonMainContainer}>
