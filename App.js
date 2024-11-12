@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import Routes from "./src/navigation/Routes";
 import MyProvider from "./src/Context/MainContext";
 import store from "./Redux/store";
+import { StatusBar } from "react-native";
 
 export default function App() {
   // const dispatch=useDispatch()
@@ -11,18 +12,15 @@ export default function App() {
     <Provider store={store}>
       <MyProvider>
         <NavigationContainer>
+          <StatusBar
+            translucent={true}
+            backgroundColor={"white"}
+            barStyle={"dark-content"}
+          />
+
           <Routes />
         </NavigationContainer>
       </MyProvider>
     </Provider>
   );
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "#fff",
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-// });

@@ -5,8 +5,9 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  StatusBar,
 } from "react-native";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import ProductCard from "../components/ProductCard";
 import { MainContext } from "../Context/MainContext";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -27,8 +28,16 @@ const HomeScreen = () => {
   const { products } = useSelector((state) => state.products);
   return (
     <View style={[styles.mainContainer, { paddingTop: top }]}>
+      <StatusBar
+        translucent={true}
+        backgroundColor={"white"}
+        barStyle={"dark-content"}
+      />
+
       <ScrollView contentContainerStyle={styles.container}>
-        <Text style={styles.userName}>Hello Michael</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
+          <Text style={styles.userName}>Hello Michael</Text>
+        </TouchableOpacity>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -45,7 +54,9 @@ const HomeScreen = () => {
         </ScrollView>
         <View style={styles.dealContainer}>
           <Text style={styles.title}>Deals of the day</Text>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Categories", "All")}
+          >
             <Text style={styles.seeAllButton}>See all</Text>
           </TouchableOpacity>
         </View>
