@@ -50,11 +50,11 @@ function HomeStackScreen({ navigation, route }) {
         component={HomeScreen}
         options={{ headerShown: false }}
       />
-      <HomeStack.Screen
+      {/* <HomeStack.Screen
         name="ProductDetails"
         component={ProductDetailsScreen}
         options={{ headerShown: true, headerTitle: "Product Details" }}
-      />
+      /> */}
       <HomeStack.Screen
         name="Categories"
         component={CategoriesViewsScreen}

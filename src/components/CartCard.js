@@ -19,10 +19,9 @@ const CartCard = ({ product }) => {
     <View style={styles.container}>
       <TouchableOpacity
         onPress={() => navigation.navigate("ProductDetails", product)}
+        style={styles.imageContainer}
       >
-        <View style={styles.imageContainer}>
-          <Image style={styles.cardImage} source={{ uri: url }} />
-        </View>
+        <Image style={styles.cardImage} source={{ uri: url }} />
       </TouchableOpacity>
       <View style={styles.itemDetailsContainer}>
         <Text style={styles.productPriceText}>

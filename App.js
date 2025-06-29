@@ -1,13 +1,17 @@
 import { Provider } from "react-redux";
-import { NavigationContainer } from "@react-navigation/native";
-import Routes from "./src/navigation/Routes";
-import MyProvider from "./src/Context/MainContext";
-import store from "./Redux/store";
 import { StatusBar } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+
+import store from "./Redux/store";
+import MyProvider from "./src/Context/MainContext";
+import Routes from "./src/navigation/Routes";
+
+import { createStackNavigator } from "@react-navigation/stack";
+import ProductDetailsScreen from "./src/screens/ProductDetailsScreen";
+
+const RootStack = createStackNavigator();
 
 export default function App() {
-  // const dispatch=useDispatch()
-  // const {test}=useSelector(state=>state.user)
   return (
     <Provider store={store}>
       <MyProvider>
@@ -18,7 +22,18 @@ export default function App() {
             barStyle={"dark-content"}
           />
 
-          <Routes />
+          <RootStack.Navigator>
+            <RootStack.Screen
+              name="Main"
+              component={Routes}
+              options={{ headerShown: false }}
+            />
+            <RootStack.Screen
+              name="ProductDetails"
+              component={ProductDetailsScreen}
+              options={{ headerShown: true, title: "Product Details" }}
+            />
+          </RootStack.Navigator>
         </NavigationContainer>
       </MyProvider>
     </Provider>

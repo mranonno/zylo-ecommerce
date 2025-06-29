@@ -24,13 +24,13 @@ const FavoriteCard = ({ product }) => {
     }
   };
   return (
-    <TouchableOpacity
-      onPress={() => navigation.navigate("ProductDetails", product)}
-      style={styles.container}
-    >
-      <View style={styles.imageContainer}>
+    <View style={styles.container}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("ProductDetails", product)}
+        style={styles.imageContainer}
+      >
         <Image style={styles.cardImage} source={{ uri: url }} />
-      </View>
+      </TouchableOpacity>
       <View style={styles.itemDetailsContainer}>
         <Text style={styles.productPriceText}>${product?.price || "00"}</Text>
         <Text style={styles.productNameText}>
@@ -48,7 +48,7 @@ const FavoriteCard = ({ product }) => {
           <AntDesign name="heart" size={24} color="tomato" />
         </TouchableOpacity>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 };
 
