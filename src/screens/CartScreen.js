@@ -1,5 +1,5 @@
 import {
-  ScrollView,
+  FlatList,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -10,7 +10,7 @@ import React, { useContext } from "react";
 import CartCard from "../components/CartCard";
 import { MainContext } from "../Context/MainContext";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import shoppingCartEmpty from "..//../assets/shopping.png";
+import shoppingCartEmpty from "../../assets/shopping.png";
 
 const CartScreen = () => {
   const { carts } = useContext(MainContext);
@@ -19,6 +19,7 @@ const CartScreen = () => {
   const price = carts.reduce((total, cart) => total + cart.price, 0);
   const initialTotalPrice = price + shippingPrice;
   const totalPrice = initialTotalPrice.toFixed(2);
+
   return (
     <View style={[styles.container, { paddingTop: top }]}>
       <View style={[styles.stickyHeader, { paddingTop: top }]}>
@@ -28,17 +29,17 @@ const CartScreen = () => {
         {carts.length < 1 ? (
           <View style={styles.emptyContainer}>
             <Image style={styles.emptyImage} source={shoppingCartEmpty} />
-            <Text style={styles.emptyText}>Opps!!</Text>
+            <Text style={styles.emptyText}>Oops!!</Text>
             <Text>Your shopping cart is empty!</Text>
           </View>
         ) : (
-          <ScrollView contentContainerStyle={styles.scrollContainer}>
-            <View style={styles.cartContainer}>
-              {carts?.map((product, index) => (
-                <CartCard product={product} key={index} />
-              ))}
-            </View>
-          </ScrollView>
+          <FlatList
+            data={carts}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({ item }) => <CartCard product={item} />}
+            contentContainerStyle={styles.scrollContainer}
+            ItemSeparatorComponent={() => <View style={{ height: 12 }} />}
+          />
         )}
 
         <View style={styles.checkoutContainer}>
@@ -102,14 +103,10 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingBottom: 59,
   },
-  cartContainer: {
-    flexDirection: "column",
-    rowGap: 12,
-  },
   scrollContainer: {
     padding: 20,
     marginTop: 40,
-    paddingBottom: 80,
+    paddingBottom: 55,
   },
   checkoutContainer: {
     position: "absolute",

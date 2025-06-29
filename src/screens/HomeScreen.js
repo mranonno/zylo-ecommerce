@@ -14,6 +14,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "../../Redux/Slice/ProductSlice";
 import { useNavigation } from "@react-navigation/native";
+import CategorySlider from "../components/CategorySlider";
 
 const HomeScreen = () => {
   const { allProducts, categories, bannerProducts } = useContext(MainContext);
@@ -38,20 +39,7 @@ const HomeScreen = () => {
         <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
           <Text style={styles.userName}>Hello Michael</Text>
         </TouchableOpacity>
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.category}
-        >
-          {categories.map((category, index) => (
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Categories", category)}
-              key={index}
-            >
-              <Text style={styles.categoryButton}>{category}</Text>
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
+        <CategorySlider categories={categories} />
         <View style={styles.dealContainer}>
           <Text style={styles.title}>Deals of the day</Text>
           <TouchableOpacity
@@ -99,7 +87,6 @@ const styles = StyleSheet.create({
   SingleCardModelText: {
     color: "#868D94",
   },
-  categoryButton: { fontSize: 16 },
   dealContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -159,11 +146,6 @@ const styles = StyleSheet.create({
   },
   container: { padding: 20, paddingTop: 0, backgroundColor: "#F2F3F5" },
   userName: { fontSize: 36, marginTop: 20, marginBottom: 8, fontWeight: "800" },
-  category: {
-    alignItems: "center",
-    flexDirection: "row",
-    gap: 32,
-  },
 
   title: {
     fontSize: 24,

@@ -1,4 +1,11 @@
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import React, { useContext } from "react";
 import FavoriteCard from "../components/FavoriteCard";
 import { MainContext } from "../Context/MainContext";
@@ -16,17 +23,17 @@ const FavoritesScreen = () => {
       {favorites.length < 1 ? (
         <View style={styles.emptyContainer}>
           <Image style={styles.emptyImage} source={favoriteEmpty} />
-          <Text style={styles.emptyText}>Opps!!</Text>
+          <Text style={styles.emptyText}>Oops!!</Text>
           <Text>Your favorites list is empty!</Text>
         </View>
       ) : (
-        <ScrollView contentContainerStyle={styles.scrollContainer}>
-          <View style={styles.favoritesContainer}>
-            {favorites.map((product, index) => (
-              <FavoriteCard product={product} key={index} />
-            ))}
-          </View>
-        </ScrollView>
+        <FlatList
+          data={favorites}
+          keyExtractor={(item, index) => index.toString()}
+          contentContainerStyle={styles.scrollContainer}
+          ItemSeparatorComponent={() => <View style={{ height: 12 }} />}
+          renderItem={({ item }) => <FavoriteCard product={item} />}
+        />
       )}
     </View>
   );
@@ -58,10 +65,6 @@ const styles = StyleSheet.create({
     marginHorizontal: "auto",
     fontWeight: "800",
   },
-  favoritesContainer: {
-    flexDirection: "column",
-    rowGap: 12,
-  },
   stickyHeader: {
     position: "absolute",
     top: 0,
@@ -74,6 +77,6 @@ const styles = StyleSheet.create({
   scrollContainer: {
     padding: 20,
     marginTop: 40,
-    paddingBottom: 80,
+    paddingBottom: 55,
   },
 });
