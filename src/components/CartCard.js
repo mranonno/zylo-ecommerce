@@ -3,8 +3,10 @@ import React, { useContext } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { MainContext } from "../Context/MainContext";
 import { showToast } from "./HelpingComponents";
+import { useNavigation } from "@react-navigation/native";
 
 const CartCard = ({ product }) => {
+  const navigation = useNavigation();
   const { removeFromCart } = useContext(MainContext);
   const url = product.image;
 
@@ -12,11 +14,16 @@ const CartCard = ({ product }) => {
     removeFromCart(product.id);
     showToast("Removed from cart!", "black");
   };
+
   return (
     <View style={styles.container}>
-      <View style={styles.imageContainer}>
-        <Image style={styles.cardImage} source={{ uri: url }} />
-      </View>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("ProductDetails", product)}
+      >
+        <View style={styles.imageContainer}>
+          <Image style={styles.cardImage} source={{ uri: url }} />
+        </View>
+      </TouchableOpacity>
       <View style={styles.itemDetailsContainer}>
         <Text style={styles.productPriceText}>
           ${product?.price || "00.00"}
