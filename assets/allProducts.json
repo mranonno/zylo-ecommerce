@@ -98,5 +98,15 @@
     "color": "White",
     "description": "The TP-Link TL-WR841N 300Mbps Wireless Router offers fast and reliable wireless connectivity for your home or small office network. With a maximum speed of 300Mbps, it ensures smooth streaming, gaming, and browsing experiences. The router features 3 fixed antennas for enhanced wireless coverage and a stable connection throughout your space. It includes multiple LAN ports for wired connections and a user-friendly interface for easy setup and management. The TL-WR841N also supports WPA/WPA2 encryption to keep your network secure. Its compact design and reliable performance make it a great choice for both basic and advanced networking needs.",
     "category": "Networking"
+  },
+  {
+    "id": "11",
+    "image": "https://i.postimg.cc/MZ4zxtX4/router.png",
+    "price": 49.99,
+    "name": "TP-Link TL-WR841N Wireless Router",
+    "model": "TL-WR841N",
+    "color": "White",
+    "description": "The TP-Link TL-WR841N 300Mbps Wireless Router offers fast and reliable wireless connectivity for your home or small office network. With a maximum speed of 300Mbps, it ensures smooth streaming, gaming, and browsing experiences. The router features 3 fixed antennas for enhanced wireless coverage and a stable connection throughout your space. It includes multiple LAN ports for wired connections and a user-friendly interface for easy setup and management. The TL-WR841N also supports WPA/WPA2 encryption to keep your network secure. Its compact design and reliable performance make it a great choice for both basic and advanced networking needs.",
+    "category": "Networking"
   }
 ]

@@ -70,8 +70,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F2F3F5",
   },
   container: {
-    paddingHorizontal: 20,
-    paddingBottom: 20,
+    paddingHorizontal: 12,
   },
   recommendedText: {
     marginBottom: 10,
@@ -84,6 +83,6 @@ const styles = StyleSheet.create({
   },
   columnWrapper: {
     justifyContent: "space-between",
-    marginBottom: 20,
+    marginBottom: 12,
   },
 });

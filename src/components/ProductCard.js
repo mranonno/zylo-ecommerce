@@ -19,8 +19,8 @@ const ProductCard = ({ product }) => {
   const navigation = useNavigation();
   const { scale, onPressIn, onPressOut } = useScaleOnPress();
   const { width: screenWidth } = useWindowDimensions();
-  const cardGap = 20;
-  const cardWidth = (screenWidth - 20 * 2 - cardGap) / 2;
+  const cardGap = 12;
+  const cardWidth = (screenWidth - 12 * 2 - cardGap) / 2;
 
   const { addToFavorite, favorites, removeFromFavorite } =
     useContext(MainContext);
@@ -66,13 +66,20 @@ const ProductCard = ({ product }) => {
             resizeMode="contain"
           />
         </View>
-        <Text style={styles.productPriceText}>${product.price || "00.00"}</Text>
         <Text numberOfLines={2} style={styles.productNameText}>
           {product.name || "Unavailable"}
         </Text>
-        <Text numberOfLines={1} style={styles.productModelText}>
+        <View style={styles.priceContainer}>
+          <Text style={styles.productPriceText}>
+            ${product.price || "00.00"}
+          </Text>
+          <Text style={styles.productPriceText}>
+            ${product.price || "00.00"}
+          </Text>
+        </View>
+        {/* <Text numberOfLines={1} style={styles.productModelText}>
           Model: {product.model || "N/A"}, {product.color || "N/A"}
-        </Text>
+        </Text> */}
       </Animated.View>
     </Pressable>
   );
@@ -125,4 +132,5 @@ const styles = StyleSheet.create({
     zIndex: 10,
     elevation: 3,
   },
+  priceContainer: { flexDirection: "row" },
 });
