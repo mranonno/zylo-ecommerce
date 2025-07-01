@@ -4,12 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import store from "./Redux/store";
 import MyProvider from "./src/Context/MainContext";
-import Routes from "./src/navigation/Routes";
-
-import { createStackNavigator } from "@react-navigation/stack";
-import ProductDetailsScreen from "./src/screens/ProductDetailsScreen";
-
-const RootStack = createStackNavigator();
+import RootNavigator from "./src/navigation/RootNavigator";
 
 export default function App() {
   return (
@@ -18,22 +13,10 @@ export default function App() {
         <NavigationContainer>
           <StatusBar
             translucent={true}
-            backgroundColor={"white"}
-            barStyle={"dark-content"}
+            backgroundColor="white"
+            barStyle="dark-content"
           />
-
-          <RootStack.Navigator>
-            <RootStack.Screen
-              name="Main"
-              component={Routes}
-              options={{ headerShown: false }}
-            />
-            <RootStack.Screen
-              name="ProductDetails"
-              component={ProductDetailsScreen}
-              options={{ headerShown: true, title: "Product Details" }}
-            />
-          </RootStack.Navigator>
+          <RootNavigator />
         </NavigationContainer>
       </MyProvider>
     </Provider>

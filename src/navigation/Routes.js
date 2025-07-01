@@ -6,11 +6,16 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import FavoritesScreen from "../screens/FavoritesScreen";
 import { createStackNavigator } from "@react-navigation/stack";
 import ProductDetailsScreen from "../screens/ProductDetailsScreen";
-import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
+import {
+  getFocusedRouteNameFromRoute,
+  NavigationContainer,
+} from "@react-navigation/native";
 import { useLayoutEffect } from "react";
 import BrowseScreen from "../screens/BrowseScreen";
 import ComingSoonScreen from "../components/ComingSoonScreen";
 import CategoriesViewsScreen from "../screens/CategoriesViewsScreen";
+import RegisterScreen from "../screens/RegisterScreen";
+import LoginScreen from "../screens/LoginScreen";
 
 const HomeStack = createStackNavigator();
 const BrowseStack = createStackNavigator();
@@ -34,6 +39,7 @@ function BrowseStackScreen() {
     </BrowseStack.Navigator>
   );
 }
+
 function HomeStackScreen({ navigation, route }) {
   const routeName = getFocusedRouteNameFromRoute(route);
   useLayoutEffect(() => {

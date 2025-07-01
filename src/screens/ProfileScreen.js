@@ -96,6 +96,24 @@ const ProfileScreen = () => {
           </View>
           <Feather name="star" size={24} color={"black"} />
         </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Login")}
+          style={styles.profileSectionSingleLine}
+        >
+          <View>
+            <Text style={styles.textTitle}>Login Screen</Text>
+          </View>
+          <Feather name="star" size={24} color={"black"} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Register")}
+          style={styles.profileSectionSingleLine}
+        >
+          <View>
+            <Text style={styles.textTitle}>Register Screen</Text>
+          </View>
+          <Feather name="star" size={24} color={"black"} />
+        </TouchableOpacity>
       </View>
     </View>
   );
