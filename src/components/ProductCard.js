@@ -1,15 +1,30 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-import React, { useContext } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  Pressable,
+  Animated,
+} from "react-native";
+import { useContext } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 import { MainContext } from "../Context/MainContext";
 import { showToast } from "./HelpingComponents";
+import { useScaleOnPress } from "../hooks/useScaleOnPress";
+import { useWindowDimensions } from "react-native";
 
 const ProductCard = ({ product }) => {
   const navigation = useNavigation();
+  const { scale, onPressIn, onPressOut } = useScaleOnPress();
+  const { width: screenWidth } = useWindowDimensions();
+  const cardGap = 20;
+  const cardWidth = (screenWidth - 20 * 2 - cardGap) / 2;
+
   const { addToFavorite, favorites, removeFromFavorite } =
     useContext(MainContext);
-  const url = product.image;
+
   const isFavorite = favorites.find((item) => item.id === product.id);
   const handleFavorites = () => {
     if (isFavorite) {
@@ -20,12 +35,20 @@ const ProductCard = ({ product }) => {
       showToast("Added to favorite!", "black");
     }
   };
+
   return (
-    <TouchableOpacity
+    <Pressable
+      android_ripple={{ color: "#eee" }}
+      onPressIn={onPressIn}
+      onPressOut={onPressOut}
       onPress={() => navigation.navigate("ProductDetails", product)}
-      style={styles.mainContainer}
     >
-      <View>
+      <Animated.View
+        style={[
+          styles.mainContainer,
+          { width: cardWidth, transform: [{ scale }] },
+        ]}
+      >
         <View style={styles.productImageContainer}>
           <TouchableOpacity
             onPress={handleFavorites}
@@ -37,61 +60,69 @@ const ProductCard = ({ product }) => {
               color={"tomato"}
             />
           </TouchableOpacity>
-          <Image style={styles.productImage} source={{ uri: url }} />
+          <Image
+            style={styles.productImage}
+            source={{ uri: product.image }}
+            resizeMode="contain"
+          />
         </View>
-        <Text style={styles.productPriceText}>${product.price || "00:00"}</Text>
-        <Text style={styles.productNameText}>
-          {product.name || "unavailable"}
+        <Text style={styles.productPriceText}>${product.price || "00.00"}</Text>
+        <Text numberOfLines={2} style={styles.productNameText}>
+          {product.name || "Unavailable"}
         </Text>
-        <View>
-          <Text style={styles.productModelText}>
-            Model: {product.model || "unavailable"},{" "}
-            {product.color || "unavailable"}
-          </Text>
-        </View>
-      </View>
-    </TouchableOpacity>
+        <Text numberOfLines={1} style={styles.productModelText}>
+          Model: {product.model || "N/A"}, {product.color || "N/A"}
+        </Text>
+      </Animated.View>
+    </Pressable>
   );
 };
 
 export default ProductCard;
-
 const styles = StyleSheet.create({
-  mainContainer: { width: "48%" },
+  mainContainer: {
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    padding: 12,
+  },
+
+  productImageContainer: {
+    backgroundColor: "#fff",
+    borderRadius: 8,
+    height: 140,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 8,
+    position: "relative",
+    overflow: "hidden",
+  },
   productImage: {
-    width: "85%",
+    width: "100%",
     height: "100%",
-    resizeMode: "contain",
   },
   productPriceText: {
     fontWeight: "900",
-    fontSize: 20,
+    fontSize: 18,
     color: "tomato",
   },
   productNameText: {
     fontSize: 16,
     fontWeight: "600",
+    color: "#333",
+    marginVertical: 2,
   },
   productModelText: {
     color: "#868D94",
+    fontSize: 13,
   },
   favoriteButton: {
     position: "absolute",
-    top: 5,
-    right: 5,
-    padding: 8,
-    borderRadius: 50,
-    backgroundColor: "#F2F3F5",
-    zIndex: 1,
-  },
-  productImageContainer: {
-    backgroundColor: "white",
-    borderRadius: 24,
-    padding: 30,
-    alignItems: "center",
-    justifyContent: "center",
-    height: 160,
-    marginBottom: 8,
-    position: "relative",
+    top: 6,
+    right: 6,
+    padding: 6,
+    borderRadius: 20,
+    backgroundColor: "#fff",
+    zIndex: 10,
+    elevation: 3,
   },
 });

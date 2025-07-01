@@ -1,28 +1,31 @@
 import {
-  ScrollView,
+  FlatList,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native"; // Don't forget this!
 
 const CategorySlider = ({ categories }) => {
+  const navigation = useNavigation(); // Needed for navigation
+
+  const renderItem = ({ item }) => (
+    <TouchableOpacity onPress={() => navigation.navigate("Categories", item)}>
+      <Text style={styles.categoryButton}>{item}</Text>
+    </TouchableOpacity>
+  );
+
   return (
     <View>
-      <ScrollView
+      <FlatList
+        data={categories}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => index.toString()}
         horizontal
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.category}
-      >
-        {categories.map((category, index) => (
-          <TouchableOpacity
-            onPress={() => navigation.navigate("Categories", category)}
-            key={index}
-          >
-            <Text style={styles.categoryButton}>{category}</Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
+      />
     </View>
   );
 };
@@ -35,5 +38,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 32,
   },
-  categoryButton: { fontSize: 16 },
+  categoryButton: {
+    fontSize: 16,
+  },
 });
