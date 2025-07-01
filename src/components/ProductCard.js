@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Pressable,
   Animated,
+  Alert,
 } from "react-native";
 import { useContext } from "react";
 import { useNavigation } from "@react-navigation/native";
@@ -51,12 +52,13 @@ const ProductCard = ({ product }) => {
       >
         <View style={styles.productImageContainer}>
           <TouchableOpacity
+            activeOpacity={0.7}
             onPress={handleFavorites}
             style={styles.favoriteButton}
           >
             <AntDesign
               name={isFavorite ? "heart" : "hearto"}
-              size={20}
+              size={16}
               color={"tomato"}
             />
           </TouchableOpacity>
@@ -70,16 +72,22 @@ const ProductCard = ({ product }) => {
           {product.name || "Unavailable"}
         </Text>
         <View style={styles.priceContainer}>
-          <Text style={styles.productPriceText}>
-            ${product.price || "00.00"}
+          <Text style={styles.offerPriceText}>
+            {product?.offerPrice || product?.price || "00.00"}৳
           </Text>
-          <Text style={styles.productPriceText}>
-            ${product.price || "00.00"}
-          </Text>
+          {product?.offerPrice && (
+            <Text style={styles.productPriceText}>{product?.price}৳</Text>
+          )}
         </View>
-        {/* <Text numberOfLines={1} style={styles.productModelText}>
-          Model: {product.model || "N/A"}, {product.color || "N/A"}
-        </Text> */}
+        <TouchableOpacity
+          style={styles.buyButton}
+          onPress={() => {
+            // You can replace this with your real "Add to Cart" logic
+            Alert.alert("Buy", `You clicked Buy for ${product.name}`);
+          }}
+        >
+          <Text style={styles.buyButtonText}>Buy Now</Text>
+        </TouchableOpacity>
       </Animated.View>
     </Pressable>
   );
@@ -99,7 +107,6 @@ const styles = StyleSheet.create({
     height: 140,
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 8,
     position: "relative",
     overflow: "hidden",
   },
@@ -108,15 +115,22 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   productPriceText: {
-    fontWeight: "900",
+    fontWeight: "600",
+    fontSize: 16,
+    color: "gray",
+    textDecorationLine: "line-through",
+  },
+  offerPriceText: {
+    fontWeight: "800",
     fontSize: 18,
     color: "tomato",
   },
+
   productNameText: {
     fontSize: 16,
     fontWeight: "600",
     color: "#333",
-    marginVertical: 2,
+    marginVertical: 12,
   },
   productModelText: {
     color: "#868D94",
@@ -126,11 +140,28 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 6,
     right: 6,
-    padding: 6,
-    borderRadius: 20,
+    padding: 4,
+    borderRadius: 50,
     backgroundColor: "#fff",
     zIndex: 10,
-    elevation: 3,
+    elevation: 1,
   },
-  priceContainer: { flexDirection: "row" },
+  priceContainer: {
+    flexDirection: "row",
+    gap: 8,
+    alignContent: "center",
+  },
+  buyButton: {
+    marginTop: 12,
+    backgroundColor: "tomato",
+    paddingVertical: 8,
+    borderRadius: 8,
+    alignItems: "center",
+  },
+
+  buyButtonText: {
+    color: "#fff",
+    fontWeight: "700",
+    fontSize: 16,
+  },
 });
