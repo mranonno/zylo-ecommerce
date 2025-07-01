@@ -5,7 +5,7 @@ const HomeScreenHeader = () => {
 
   return (
     <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
-      <Text style={styles.userName}>Hello Michael</Text>
+      <Text style={styles.userName}>Hello Anonno</Text>
     </TouchableOpacity>
   );
 };

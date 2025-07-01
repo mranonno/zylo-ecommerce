@@ -1,5 +1,4 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React from "react";
 import {
   AntDesign,
   Feather,
@@ -21,8 +20,8 @@ const ProfileScreen = () => {
       <View style={styles.profileContainer}>
         <View style={[styles.profileSectionDoubleLine, { paddingBottom: 20 }]}>
           <View>
-            <Text style={styles.userName}>Michael Ford</Text>
-            <Text style={styles.userEmail}>Email: michael@gmail.com</Text>
+            <Text style={styles.userName}>Anonno Das</Text>
+            <Text style={styles.userEmail}>Email: anonnodas97@gmail.com</Text>
           </View>
           <FontAwesome name="user-circle-o" size={36} color={"black"} />
         </View>
