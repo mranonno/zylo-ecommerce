@@ -55,10 +55,15 @@ const ProductDetailsScreen = ({ route }) => {
             </TouchableOpacity>
           </View>
         </View>
-        <View style={{ padding: 10 }}>
-          <Text style={styles.productPriceText}>
-            ${product.price || "00.00"}
-          </Text>
+        <View style={styles.productDetailsContainer}>
+          <View style={styles.priceContainer}>
+            <Text style={styles.offerPriceText}>
+              {product?.offerPrice || product?.price || "00.00"}৳
+            </Text>
+            {product?.offerPrice && (
+              <Text style={styles.productPriceText}>{product?.price}৳</Text>
+            )}
+          </View>
           <Text style={styles.productNameText}>
             {product.name || "unavailable"}
           </Text>
@@ -68,18 +73,19 @@ const ProductDetailsScreen = ({ route }) => {
               {product.color || "unavailable"}
             </Text>
           </View>
+          <View>
+            <Text style={styles.productDetailsTitle}>Product Details:</Text>
+            <Text style={styles.productDetailsText}>
+              {product.description || "unavailable"}
+            </Text>
+          </View>
+          <TouchableOpacity
+            onPress={handleAddToCart}
+            style={styles.addToCartButton}
+          >
+            <Text style={styles.addToCardButtonText}>Add to cart</Text>
+          </TouchableOpacity>
         </View>
-        <View>
-          <Text style={styles.productDetailsText}>
-            {product.description || "unavailable"}
-          </Text>
-        </View>
-        <TouchableOpacity
-          onPress={handleAddToCart}
-          style={styles.addToCartButton}
-        >
-          <Text style={styles.addToCardButtonText}>Add to cart</Text>
-        </TouchableOpacity>
       </ScrollView>
     </View>
   );
@@ -99,18 +105,37 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   productImage: { width: "100%", height: 280, resizeMode: "contain" },
+  productDetailsContainer: { marginTop: 20 },
   productNameText: {
     fontSize: 24,
     fontWeight: "500",
+    marginTop: 8,
   },
   productModelText: {
     color: "#868D94",
     fontSize: 18,
+    marginBottom: 12,
+  },
+  priceContainer: {
+    flexDirection: "row",
+    gap: 8,
+    alignItems: "center",
   },
   productPriceText: {
-    fontWeight: "900",
-    fontSize: 28,
+    fontWeight: "600",
+    fontSize: 18,
+    color: "gray",
+    textDecorationLine: "line-through",
+  },
+  offerPriceText: {
+    fontWeight: "800",
+    fontSize: 24,
     color: "tomato",
+  },
+  productDetailsTitle: {
+    fontSize: 20,
+    fontWeight: "600",
+    marginBottom: 4,
   },
   productDetailsText: {
     fontSize: 16,

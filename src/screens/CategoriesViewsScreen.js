@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
@@ -9,6 +9,7 @@ const CategoriesViewsScreen = ({ route }) => {
   const { products } = useSelector((state) => state.products);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const category = route.params;
+
   useEffect(() => {
     navigation.setOptions({ headerTitle: category });
     if (category === "All") {
@@ -19,13 +20,22 @@ const CategoriesViewsScreen = ({ route }) => {
     }
   }, [navigation, category, products]);
 
-  console.log("filteredProducts", JSON.stringify(filteredProducts, null, 1));
+  const renderItem = ({ item }) => <ProductCard product={item} />;
+
   return (
-    <ScrollView contentContainerStyle={styles.productContainer}>
-      {filteredProducts.map((product, index) => (
-        <ProductCard key={index} product={product}></ProductCard>
-      ))}
-    </ScrollView>
+    <FlatList
+      data={filteredProducts}
+      renderItem={renderItem}
+      keyExtractor={(item, index) => item._id?.toString() || index.toString()}
+      numColumns={2}
+      contentContainerStyle={styles.productContainer}
+      columnWrapperStyle={styles.rowWrapper}
+      ListEmptyComponent={
+        <View style={{ alignItems: "center", marginTop: 40 }}>
+          <Text>No products found in this category.</Text>
+        </View>
+      }
+    />
   );
 };
 
@@ -33,10 +43,10 @@ export default CategoriesViewsScreen;
 
 const styles = StyleSheet.create({
   productContainer: {
-    flexDirection: "row",
+    padding: 12,
+  },
+  rowWrapper: {
     justifyContent: "space-between",
-    flexWrap: "wrap",
-    rowGap: 20,
-    padding: 20,
+    marginBottom: 12,
   },
 });

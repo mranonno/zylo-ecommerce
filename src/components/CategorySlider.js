@@ -5,10 +5,10 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native"; // Don't forget this!
+import { useNavigation } from "@react-navigation/native";
 
 const CategorySlider = ({ categories }) => {
-  const navigation = useNavigation(); // Needed for navigation
+  const navigation = useNavigation();
 
   const renderItem = ({ item }) => (
     <TouchableOpacity onPress={() => navigation.navigate("Categories", item)}>

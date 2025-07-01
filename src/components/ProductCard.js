@@ -114,6 +114,11 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
+  priceContainer: {
+    flexDirection: "row",
+    gap: 8,
+    alignItems: "center",
+  },
   productPriceText: {
     fontWeight: "600",
     fontSize: 16,
@@ -146,11 +151,7 @@ const styles = StyleSheet.create({
     zIndex: 10,
     elevation: 1,
   },
-  priceContainer: {
-    flexDirection: "row",
-    gap: 8,
-    alignContent: "center",
-  },
+
   buyButton: {
     marginTop: 12,
     backgroundColor: "tomato",
