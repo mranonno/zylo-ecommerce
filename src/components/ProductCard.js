@@ -24,10 +24,11 @@ const ProductCard = ({ product }) => {
   const cardGap = 12;
   const cardWidth = (screenWidth - 12 * 2 - cardGap) / 2;
 
-  // const bottomSheetRef = useRef < BottomSheet > null;
-  // const handleSheetChanges = useCallback((index) => {
-  //   console.log("handleSheetChanges", index);
-  // }, []);
+  const bottomSheetRef = useRef(null);
+  const snapPoints = useMemo(() => ["50%"], []);
+  const handleSheetChanges = useCallback((index) => {
+    console.log("handleSheetChanges", index);
+  }, []);
 
   const { addToFavorite, favorites, removeFromFavorite } =
     useContext(MainContext);
@@ -97,11 +98,47 @@ const ProductCard = ({ product }) => {
           </TouchableOpacity>
         </Animated.View>
       </Pressable>
-      {/* <BottomSheet ref={bottomSheetRef} onChange={handleSheetChanges}>
+      <TouchableOpacity
+        style={[styles.button, { marginBottom: 2 }]}
+        onPress={() => bottomSheetRef.current?.expand()}
+      >
+        <Text style={styles.buttonText}>Open Bottom Sheet</Text>
+      </TouchableOpacity>
+      <BottomSheet
+        ref={bottomSheetRef}
+        index={-1}
+        snapPoints={snapPoints}
+        onChange={handleSheetChanges}
+        enablePanDownToClose={true}
+        animateOnMount={true}
+        // enableDynamicSizing
+        // enableOverDrag={false}
+        // enableHandlePanningGesture={false} //Enable or disable down by top bar
+        // enableContentPanningGesture={false}   //Enable or disable down by content
+        // detached={true}
+        // overDragResistanceFactor={6}
+        // bottomInset={40} // optional, adds spacing between sheet and screen bottom
+        style={{
+          marginHorizontal: 20,
+          shadowColor: "#000",
+          shadowOffset: { width: 0, height: 4 },
+          shadowOpacity: 0.3,
+          shadowRadius: 10,
+          elevation: 10, // for Android shadow
+          borderRadius: 16,
+          marginBottom: 20,
+        }}
+        handleIndicatorStyle
+        keyboardBehavior //keyboard: 'interactive', 'extend', 'fillParent'.
+        keyboardBlurBehavior //'none' or 'restore' — controls if keyboard should hide on swipe.
+        onAnimate
+        // animationDuration	Duration (ms) of transition animation.
+        // animationConfigs
+      >
         <BottomSheetView style={styles.contentContainer}>
           <Text>Awesome 🎉</Text>
         </BottomSheetView>
-      </BottomSheet> */}
+      </BottomSheet>
     </View>
   );
 };

@@ -1,9 +1,5 @@
-import BottomSheet, {
-  BottomSheetView,
-  useBottomSheet,
-} from "@gorhom/bottom-sheet";
 import { useNavigation } from "@react-navigation/native";
-import React, { useCallback, useMemo, useRef, useState } from "react";
+import React, { useState } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -48,19 +44,6 @@ const RegisterScreen = () => {
 
     // navigation.navigate("Login"); // optional auto-navigation
   };
-
-  const bottomSheetRef = useRef(null);
-  // | `expand()`           | Opens to the highest snap point  | সবচেয়ে ওপরে নিয়ে যায়       |
-  // | `collapse()`         | Shrinks to the lowest snap point | সবচেয়ে নিচে নিয়ে আসে       |
-  // | `close()`            | Fully closes the BottomSheet     | একদম লুকিয়ে ফেলে           |
-  // | `snapToIndex(index)` | Goes to specific snap index      | নির্দিষ্ট snap index এ যায় |
-
-  const snapPoints = useMemo(() => ["50%"], []);
-  // const snapPoints={["CONTENT_HEIGHT"]}  //for dynamic resize according to content
-  // callbacks
-  const handleSheetChanges = useCallback((index) => {
-    console.log("handleSheetChanges", index);
-  }, []);
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -115,47 +98,6 @@ const RegisterScreen = () => {
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
-      <TouchableOpacity
-        style={[styles.button, { marginBottom: 2 }]}
-        onPress={() => bottomSheetRef.current?.expand()}
-      >
-        <Text style={styles.buttonText}>Open Bottom Sheet</Text>
-      </TouchableOpacity>
-      <BottomSheet
-        ref={bottomSheetRef}
-        index={-1}
-        snapPoints={snapPoints}
-        onChange={handleSheetChanges}
-        enablePanDownToClose={true}
-        animateOnMount={true}
-        // enableDynamicSizing
-        // enableOverDrag={false}
-        // enableHandlePanningGesture={false} //Enable or disable down by top bar
-        // enableContentPanningGesture={false}   //Enable or disable down by content
-        // detached={true}
-        // overDragResistanceFactor={6}
-        // bottomInset={40} // optional, adds spacing between sheet and screen bottom
-        style={{
-          marginHorizontal: 20,
-          shadowColor: "#000",
-          shadowOffset: { width: 0, height: 4 },
-          shadowOpacity: 0.3,
-          shadowRadius: 10,
-          elevation: 10, // for Android shadow
-          borderRadius: 16,
-          marginBottom: 20,
-        }}
-        handleIndicatorStyle
-        keyboardBehavior //keyboard: 'interactive', 'extend', 'fillParent'.
-        keyboardBlurBehavior //'none' or 'restore' — controls if keyboard should hide on swipe.
-        onAnimate
-        // animationDuration	Duration (ms) of transition animation.
-        // animationConfigs
-      >
-        <BottomSheetView style={styles.contentContainer}>
-          <Text>Awesome 🎉</Text>
-        </BottomSheetView>
-      </BottomSheet>
     </SafeAreaView>
   );
 };
@@ -216,10 +158,5 @@ const styles = StyleSheet.create({
     color: "#e9443d",
     fontWeight: "600",
     fontSize: 14,
-  },
-  contentContainer: {
-    flex: 1,
-    padding: 36,
-    alignItems: "center",
   },
 });
