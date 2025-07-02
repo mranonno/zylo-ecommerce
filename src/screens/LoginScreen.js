@@ -18,16 +18,16 @@ const LoginScreen = () => {
   const navigation = useNavigation();
 
   const handleLogin = () => {
-    if (!email || !password) {
-      Alert.alert("Validation", "Please enter both email and password.");
-      return;
-    }
-    if (email == "anonnodas97@gmail.com" && password == "Anonno#1") {
-      navigation.replace("Main");
-    }
+    // if (!email || !password) {
+    //   Alert.alert("Validation", "Please enter both email and password.");
+    //   return;
+    // }
+    // if (email == "anonnodas97@gmail.com" && password == "00000000") {
+    // }
+    navigation.replace("Main");
 
     // 🔐 Replace with real login logic
-    console.log("Login attempted with:", { email, password });
+    // console.log("Login attempted with:", { email, password });
     // Alert.alert("Login", "Login functionality not implemented.");
 
     // Example: navigation.replace("Main"); // navigate to main app

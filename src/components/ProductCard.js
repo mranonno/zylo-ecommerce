@@ -8,13 +8,14 @@ import {
   Animated,
   Alert,
 } from "react-native";
-import { useContext } from "react";
+import { useCallback, useContext, useRef } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 import { MainContext } from "../Context/MainContext";
 import { showToast } from "./HelpingComponents";
 import { useScaleOnPress } from "../hooks/useScaleOnPress";
 import { useWindowDimensions } from "react-native";
+import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 
 const ProductCard = ({ product }) => {
   const navigation = useNavigation();
@@ -22,6 +23,11 @@ const ProductCard = ({ product }) => {
   const { width: screenWidth } = useWindowDimensions();
   const cardGap = 12;
   const cardWidth = (screenWidth - 12 * 2 - cardGap) / 2;
+
+  // const bottomSheetRef = useRef < BottomSheet > null;
+  // const handleSheetChanges = useCallback((index) => {
+  //   console.log("handleSheetChanges", index);
+  // }, []);
 
   const { addToFavorite, favorites, removeFromFavorite } =
     useContext(MainContext);
@@ -38,58 +44,65 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <Pressable
-      android_ripple={{ color: "#eee" }}
-      onPressIn={onPressIn}
-      onPressOut={onPressOut}
-      onPress={() => navigation.navigate("ProductDetails", product)}
-    >
-      <Animated.View
-        style={[
-          styles.mainContainer,
-          { width: cardWidth, transform: [{ scale }] },
-        ]}
+    <View>
+      <Pressable
+        android_ripple={{ color: "#eee" }}
+        onPressIn={onPressIn}
+        onPressOut={onPressOut}
+        onPress={() => navigation.navigate("ProductDetails", product)}
       >
-        <View style={styles.productImageContainer}>
-          <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={handleFavorites}
-            style={styles.favoriteButton}
-          >
-            <AntDesign
-              name={isFavorite ? "heart" : "hearto"}
-              size={16}
-              color={"tomato"}
-            />
-          </TouchableOpacity>
-          <Image
-            style={styles.productImage}
-            source={{ uri: product.image }}
-            resizeMode="contain"
-          />
-        </View>
-        <Text numberOfLines={2} style={styles.productNameText}>
-          {product.name || "Unavailable"}
-        </Text>
-        <View style={styles.priceContainer}>
-          <Text style={styles.offerPriceText}>
-            {product?.offerPrice || product?.price || "00.00"}৳
-          </Text>
-          {product?.offerPrice && (
-            <Text style={styles.productPriceText}>{product?.price}৳</Text>
-          )}
-        </View>
-        <TouchableOpacity
-          style={styles.buyButton}
-          onPress={() => {
-            // You can replace this with your real "Add to Cart" logic
-            Alert.alert("Buy", `You clicked Buy for ${product.name}`);
-          }}
+        <Animated.View
+          style={[
+            styles.mainContainer,
+            { width: cardWidth, transform: [{ scale }] },
+          ]}
         >
-          <Text style={styles.buyButtonText}>Buy Now</Text>
-        </TouchableOpacity>
-      </Animated.View>
-    </Pressable>
+          <View style={styles.productImageContainer}>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={handleFavorites}
+              style={styles.favoriteButton}
+            >
+              <AntDesign
+                name={isFavorite ? "heart" : "hearto"}
+                size={16}
+                color={"tomato"}
+              />
+            </TouchableOpacity>
+            <Image
+              style={styles.productImage}
+              source={{ uri: product.image }}
+              resizeMode="contain"
+            />
+          </View>
+          <Text numberOfLines={2} style={styles.productNameText}>
+            {product.name || "Unavailable"}
+          </Text>
+          <View style={styles.priceContainer}>
+            <Text style={styles.offerPriceText}>
+              {product?.offerPrice || product?.price || "00.00"}৳
+            </Text>
+            {product?.offerPrice && (
+              <Text style={styles.productPriceText}>{product?.price}৳</Text>
+            )}
+          </View>
+          <TouchableOpacity
+            style={styles.buyButton}
+            onPress={() => {
+              // You can replace this with your real "Add to Cart" logic
+              Alert.alert("Buy", `You clicked Buy for ${product.name}`);
+            }}
+          >
+            <Text style={styles.buyButtonText}>Buy Now</Text>
+          </TouchableOpacity>
+        </Animated.View>
+      </Pressable>
+      {/* <BottomSheet ref={bottomSheetRef} onChange={handleSheetChanges}>
+        <BottomSheetView style={styles.contentContainer}>
+          <Text>Awesome 🎉</Text>
+        </BottomSheetView>
+      </BottomSheet> */}
+    </View>
   );
 };
 
@@ -164,5 +177,10 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "700",
     fontSize: 16,
+  },
+  contentContainer: {
+    flex: 1,
+    padding: 36,
+    alignItems: "center",
   },
 });
